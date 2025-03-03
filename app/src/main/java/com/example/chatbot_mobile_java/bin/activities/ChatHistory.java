@@ -2,43 +2,42 @@ package com.example.chatbot_mobile_java.bin.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot_mobile_java.R;
+import com.example.chatbot_mobile_java.bin.adapters.history_chat_adapter;
+import com.example.chatbot_mobile_java.bin.data.chat;
+import com.example.chatbot_mobile_java.bin.data.listChat;
+
+import java.util.ArrayList;
 
 public class ChatHistory extends AppCompatActivity  {
+    RecyclerView rvHistoryChat;
+    RecyclerView.Adapter historyChatAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_history);
+        getSupportActionBar().hide();
 
-//        val rvHistoryChat = findViewById<RecyclerView>(R.id.rvHistoryChat) ;
-//                val chatList = listChat(mutableListOf())
-//
-//        chatList.listChat.add(chat("What is your name?"))
-//        chatList.listChat.add(chat("How old are you?"))
-//        chatList.listChat.add(chat("Where are you from?"))
-//        chatList.listChat.add(chat("Do you like coffee?"))
-//        chatList.listChat.add(chat("What is your favorite color?"))
-//        chatList.listChat.add(chat("Nguyễn Văn Bin có bằng TOEIC 765/990 điểm"))
-//        chatList.listChat.add(chat("What's your favorite movie?"))
-//        chatList.listChat.add(chat("Do you like traveling?"))
-//        chatList.listChat.add(chat("What is your hobby?"))
-//        chatList.listChat.add(chat("What's the weather like?"))
-//        chatList.listChat.add(chat("What music do you like?"))
-//        chatList.listChat.add(chat("Do you speak any languages?"))
-//        chatList.listChat.add(chat("What's your favorite sport?"))
-//        chatList.listChat.add(chat("Do you play video games?"))
-//        chatList.listChat.add(chat("Have you ever been abroad?"))
-//        chatList.listChat.add(chat("Do you like reading books?"))
-//        chatList.listChat.add(chat("What's your dream job?"))
-//        chatList.listChat.add(chat("Do you like cooking?"))
-//        chatList.listChat.add(chat("What's your favorite season?"))
-//        chatList.listChat.add(chat("Are you a morning person?"))
-//
-//        val historyChatAdapter = history_chat_adapter(chatList.listChat)
-//        rvHistoryChat.adapter = historyChatAdapter
-//        rvHistoryChat.layoutManager = LinearLayoutManager(this)
+        listChat chatList = new listChat(new ArrayList<>());
+        chatList.addItemToListChat(new chat("skibidi toilet"));
+        chatList.addItemToListChat(new chat("bin skibidi"));
+        chatList.addItemToListChat(new chat("phúc skibidi"));
+        chatList.addItemToListChat(new chat("thái skibidi"));
+        chatList.addItemToListChat(new chat("quân skibidi"));
+        Log.d("listChat", chatList.getItematIndexInListChat(0).getChatText().toString());
+
+        rvHistoryChat = findViewById(R.id.rvHistoryChat);
+        rvHistoryChat.setLayoutManager(new LinearLayoutManager(this));
+        historyChatAdapter = new history_chat_adapter(chatList);
+        rvHistoryChat.setAdapter(historyChatAdapter);
+
     }
 }
