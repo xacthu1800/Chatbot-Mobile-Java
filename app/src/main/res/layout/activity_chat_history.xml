@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/fragment_history_chat_toolBar"
+        android:id="@+id/chat_toolBar"
         android:name="com.example.chatbot_mobile_java.bin.fragments.chat_history_toolbar"
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_history_chat_toolBar"
+        app:layout_constraintTop_toBottomOf="@+id/chat_toolBar"
         app:layout_constraintVertical_bias="0.5"
         tools:listitem="@layout/item_chat_history" />
 
