@@ -5,10 +5,18 @@
       <map>
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1025" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1025" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/icon_model.xml" value="0.2165" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/rounded.xml" value="0.2165" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/rounded_button.xml" value="0.1815" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/rounded_button_black.xml" value="0.2165" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/rounded_layout_background.xml" value="0.27" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/activity_chat_history.xml" value="0.3383152173913043" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/activity_main_chat_page.xml" value="0.13764044943820225" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/chat_history.xml" value="0.25" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/fragment_chat_history_toolbar.xml" value="0.3383152173913043" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/fragment_history_chat_toolbar.xml" value="0.1757852077001013" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/fragment_toolbar.xml" value="0.3625" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/item_chat_history.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/test_constraint_layout.xml" value="0.5" />
       </map>
@@ -23,7 +31,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.33" />
+        <option name="scale" value="0.3625" />
       </ProjectState>
     </option>
   </component>

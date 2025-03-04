@@ -1,6 +1,5 @@
 package com.example.chatbot_mobile_java.bin.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -23,7 +22,7 @@ public class ChatHistory extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chat_history);
+        setContentView(R.layout.activity_chat_history);
         getSupportActionBar().hide();
 
         listChat chatList = new listChat(new ArrayList<>());
