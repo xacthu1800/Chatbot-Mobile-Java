@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chatbot_mobile_java.R;
 
-import org.jetbrains.annotations.Nullable;
+
 
 public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption;
@@ -19,7 +19,7 @@ public class MainChatPage extends AppCompatActivity {
     private boolean optionsVisible = false;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
