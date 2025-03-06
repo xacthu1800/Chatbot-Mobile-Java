@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/icon_model.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button_black.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_layout_background.xml" value="0.1145" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/layout/activity_main_chat_page.xml" value="0.264" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1025" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1025" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/drawable/icon_model.xml" value="0.2165" />
