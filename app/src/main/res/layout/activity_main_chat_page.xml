@@ -89,11 +89,14 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+
                     android:src="@drawable/new_chat"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
+
+
 
                 <TextView
                     android:textStyle="bold"
@@ -112,9 +115,11 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+
                     android:src="@drawable/model"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
+
                     android:layout_marginTop="10dp"
                     />
 
