@@ -89,11 +89,14 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+
                     android:src="@drawable/new_chat"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
+
+
 
                 <TextView
                     android:textStyle="bold"
@@ -112,9 +115,11 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+
                     android:src="@drawable/model"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
+
                     android:layout_marginTop="10dp"
                     />
 
@@ -145,23 +150,39 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/rounded_button"
                 android:padding="8dp"
-                android:layout_marginRight="12dp"
+                android:layout_marginRight="5dp"
                 />
 
-            <Button
-                android:id="@+id/btn_choose_model"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:padding="8dp"
-                android:text="Chọn mô hình"
-                android:textSize="16dp"
+                android:orientation="horizontal"
                 android:background="@drawable/rounded"
-                android:textAlignment="textStart"
-                android:gravity="start|center_vertical"
-                android:drawableStart="@drawable/model_ai"
-                android:layout_marginRight="12dp"
-                android:drawablePadding="8dp"
-                />
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/model_ai"
+                    android:layout_marginStart="5dp" />
+
+                <Button
+                    android:id="@+id/btn_choose_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="7dp"
+                    android:text="Chọn mô hình"
+                    android:textSize="19dp"
+                    android:textStyle="bold"
+                    android:textAlignment="textStart"
+                    android:gravity="start|center_vertical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
             <ImageButton
                 android:layout_width="50dp"
@@ -170,7 +191,7 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/rounded_button"
                 android:padding="8dp"
-                android:layout_marginRight="12dp"
+                android:layout_marginRight="5dp"
                 />
             <ImageButton
                 android:layout_width="50dp"
