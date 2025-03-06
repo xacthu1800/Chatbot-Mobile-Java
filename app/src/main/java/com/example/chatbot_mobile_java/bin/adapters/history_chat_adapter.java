@@ -3,7 +3,6 @@ package com.example.chatbot_mobile_java.bin.adapters;
 import android.util.Log;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +23,8 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
         this.chatList = listChat;
     }
 
-    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_history, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         Log.d("onCreateViewHolder", "run");
@@ -34,7 +32,7 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull history_chat_adapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(history_chat_adapter.MyViewHolder holder, int position) {
 
         holder.ItemChatHistory.setText(chatList.getItematIndexInListChat(position).getChatText()) ;
         Log.d("onbindView holder", "run");
@@ -49,7 +47,7 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView ItemChatHistory;
 
-        public MyViewHolder(@NonNull View itemView){
+        public MyViewHolder(View itemView){
             super(itemView);
             ItemChatHistory = itemView.findViewById(R.id.tvItemChatHistory);
             Log.d("MyviewHolder", "run");
