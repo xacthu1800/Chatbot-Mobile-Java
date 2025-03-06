@@ -68,7 +68,9 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:src="@drawable/setting"
-                        android:background="@drawable/rounded_button"/>
+                        android:background="@drawable/rounded_button"
+                        android:padding="8dp"
+                        android:layout_marginBottom="10dp"/>
 
                     <TextView
                         android:textStyle="bold"
@@ -87,9 +89,14 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/setting"
+
+                    android:src="@drawable/new_chat"
                     android:background="@drawable/rounded_button"
-                    android:layout_marginTop="10dp"/>
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+
 
                 <TextView
                     android:textStyle="bold"
@@ -108,8 +115,11 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/setting"
+
+                    android:src="@drawable/model"
                     android:background="@drawable/rounded_button"
+                    android:padding="8dp"
+
                     android:layout_marginTop="10dp"
                     />
 
@@ -139,6 +149,7 @@
                 android:src="@drawable/more_option"
                 android:scaleType="centerInside"
                 android:background="@drawable/rounded_button"
+                android:padding="8dp"
                 android:layout_marginRight="12dp"
                 />
 
@@ -163,6 +174,7 @@
                 android:src="@drawable/micro"
                 android:scaleType="centerInside"
                 android:background="@drawable/rounded_button"
+                android:padding="8dp"
                 android:layout_marginRight="12dp"
                 />
             <ImageButton
