@@ -35,7 +35,7 @@
         android:layout_below="@+id/rvMessages"
         android:background="@drawable/rounded_layout_background"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,66 +51,76 @@
             />
 
         <LinearLayout
+            android:layout_gravity="left"
             android:id="@+id/layoutExpandedOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="16dp"
             android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="left">
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:src="@drawable/setting"
                         android:background="@drawable/rounded_button"/>
 
                     <TextView
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cài đặt"
-                        android:layout_marginTop="4dp"
-                        android:textSize="12sp"/>
+                        android:layout_marginTop="7dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="22sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="left">
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:src="@drawable/setting"
-                    android:background="@drawable/rounded_button"/>
+                    android:background="@drawable/rounded_button"
+                    android:layout_marginTop="10dp"/>
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cài đặt"
-                    android:layout_marginTop="4dp"
-                    android:textSize="12sp"/>
+                    android:text="Cuộc trò chuyện mới"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="22sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="left">
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:src="@drawable/setting"
-                    android:background="@drawable/rounded_button"/>
+                    android:background="@drawable/rounded_button"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cài đặt"
-                    android:layout_marginTop="4dp"
-                    android:textSize="12sp"/>
+                    android:text="Quản lý mô hình"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="22sp"/>
             </LinearLayout>
 
         </LinearLayout>
