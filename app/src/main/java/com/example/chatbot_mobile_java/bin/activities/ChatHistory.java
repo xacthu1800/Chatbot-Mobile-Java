@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.bin.adapters.history_chat_adapter;
-import com.example.chatbot_mobile_java.bin.data.chat;
-import com.example.chatbot_mobile_java.bin.data.listChat;
+import com.example.chatbot_mobile_java.bin.data.history_chat;
+import com.example.chatbot_mobile_java.bin.data.history_listChat;
 
 import java.util.ArrayList;
 
@@ -25,12 +25,12 @@ public class ChatHistory extends AppCompatActivity  {
         setContentView(R.layout.activity_chat_history);
         getSupportActionBar().hide();
 
-        listChat chatList = new listChat(new ArrayList<>());
-        chatList.addItemToListChat(new chat("skibidi toilet"));
-        chatList.addItemToListChat(new chat("bin skibidi"));
-        chatList.addItemToListChat(new chat("phúc skibidi"));
-        chatList.addItemToListChat(new chat("thái skibidi"));
-        chatList.addItemToListChat(new chat("quân skibidi"));
+        history_listChat chatList = new history_listChat(new ArrayList<>());
+        chatList.addItemToListChat(new history_chat("skibidi toilet"));
+        chatList.addItemToListChat(new history_chat("bin skibidi"));
+        chatList.addItemToListChat(new history_chat("phúc skibidi"));
+        chatList.addItemToListChat(new history_chat("thái skibidi"));
+        chatList.addItemToListChat(new history_chat("quân skibidi"));
         Log.d("listChat", chatList.getItematIndexInListChat(0).getChatText().toString());
 
         rvHistoryChat = findViewById(R.id.rvHistoryChat);
