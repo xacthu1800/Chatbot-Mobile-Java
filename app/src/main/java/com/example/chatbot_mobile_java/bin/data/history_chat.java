@@ -1,11 +1,11 @@
 package com.example.chatbot_mobile_java.bin.data;
 
-public class chat {
+public class history_chat {
     public String getChatText() {
         return chatText;
     }
 
-    public chat(String chatText) {
+    public history_chat(String chatText) {
         this.chatText = chatText;
     }
 

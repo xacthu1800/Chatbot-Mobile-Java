@@ -10,17 +10,14 @@ import android.widget.TextView;
 
 
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.bin.data.chat;
-import com.example.chatbot_mobile_java.bin.data.listChat;
-
-import java.util.List;
+import com.example.chatbot_mobile_java.bin.data.history_listChat;
 
 public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adapter.MyViewHolder> {
 
-    listChat chatList;
+    history_listChat chatList;
 
-    public history_chat_adapter(listChat listChat) {
-        this.chatList = listChat;
+    public history_chat_adapter(history_listChat history_listChat) {
+        this.chatList = history_listChat;
     }
 
     @Override
