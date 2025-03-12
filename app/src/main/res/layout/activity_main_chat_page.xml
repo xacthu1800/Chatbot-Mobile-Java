@@ -141,6 +141,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="12dp"
+            android:visibility="visible"
             >
             <ImageButton
                 android:id="@+id/ibtnMoreOption"
@@ -154,6 +155,7 @@
                 />
 
             <LinearLayout
+                android:id="@+id/chooseModel"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
@@ -169,7 +171,6 @@
                     android:layout_marginStart="5dp" />
 
                 <Button
-                    android:id="@+id/btn_choose_model"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:padding="7dp"
@@ -185,6 +186,7 @@
             </LinearLayout>
 
             <ImageButton
+                android:id="@+id/Micro"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/micro"
@@ -194,6 +196,7 @@
                 android:layout_marginRight="5dp"
                 />
             <ImageButton
+                android:id="@+id/Enter"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/send_message"
