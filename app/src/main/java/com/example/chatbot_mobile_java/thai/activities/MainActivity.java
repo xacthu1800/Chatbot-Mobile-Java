@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.thai.adapters.RecyclerViewAdapter;
-import com.example.chatbot_mobile_java.thai.data.Api;
+import com.example.chatbot_mobile_java.bin.adapters.RecyclerViewAdapter;
+import com.example.chatbot_mobile_java.bin.data.Api;
 
 
 import java.util.ArrayList;

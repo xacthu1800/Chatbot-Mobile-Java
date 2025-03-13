@@ -1,7 +1,6 @@
-package com.example.chatbot_mobile_java.thai.adapters;
+package com.example.chatbot_mobile_java.bin.adapters;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.thai.data.Api;
+import com.example.chatbot_mobile_java.bin.data.Api;
 
 import java.util.List;
 

@@ -24,10 +24,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot_mobile_java.R;
+import com.example.chatbot_mobile_java.bin.adapters.RecyclerViewAdapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
+import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -35,7 +38,12 @@ public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
     private boolean optionsVisible = false;
+    List<Api> apiList = new ArrayList<Api>();
+
     //private RecyclerView rvMessage;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     RecyclerView rvMessages;
     RecyclerView.Adapter chatAdapter;
@@ -46,6 +54,19 @@ public class MainChatPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
 
+
+        // Thái - chọn model
+        fillApiList();
+
+        recyclerView = findViewById(R.id.rvMessages);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new RecyclerViewAdapter(apiList, this);
+        recyclerView.setAdapter(mAdapter);
+        // end thái - chọn model
 
        btnOptions = findViewById(R.id.ibtnMoreOption);
        //rvMessage = findViewById(R.id.chat_toolBar);
@@ -116,6 +137,14 @@ public class MainChatPage extends AppCompatActivity {
         chooseModel.setVisibility(View.VISIBLE);
         Micro.setVisibility(View.VISIBLE);
         Enter.setVisibility(View.VISIBLE);
+    }
+    private void fillApiList() {
+        Api a0 = new Api(0, "Gemini 2.0 Pro","Best for General", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw");
+        Api a1 = new Api(1, "Gemini 2.0 Flash","Best for General, Coding", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw");
+
+        apiList.addAll(Arrays.asList(new Api[] {a0, a1}));
+
+
     }
 
 }
