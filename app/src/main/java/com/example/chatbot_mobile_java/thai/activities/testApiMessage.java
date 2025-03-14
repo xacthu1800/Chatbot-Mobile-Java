@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.thai.adapters.RecyclerViewAdapter;
@@ -36,6 +37,8 @@ public class testApiMessage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new RecyclerViewAdapter(apiList, this);
         recyclerView.setAdapter(mAdapter);
+
+
 
     }
 

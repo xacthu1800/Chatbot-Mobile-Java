@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 //import androidx.annotation.Nullable;
@@ -18,9 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.thai.adapters.RecyclerViewAdapter;
+import com.example.chatbot_mobile_java.bin.adapters.ModelChoosing_Adapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
-import com.example.chatbot_mobile_java.thai.data.Api;
+import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption,layoutExpandedModel, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
     private Button btnChooseModel;
+    private EditText etMessageInput;
 
     private boolean optionsVisible = false;
     private boolean optionsVisible_Model = false;
@@ -50,6 +52,8 @@ public class MainChatPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
 
+        // khai báo giá trị các View
+        etMessageInput = findViewById(R.id.etMessageInput);
         btnChooseModel = findViewById(R.id.btnChooseModel);
         btnOptions = findViewById(R.id.ibtnMoreOption);
         layoutExpandOption = findViewById(R.id.layoutExpandedOptions);
@@ -68,7 +72,9 @@ public class MainChatPage extends AppCompatActivity {
                 return false;
             }
         });
+        // kết thúc khai báo giá trị các View
 
+        // thiết lập chức năng các nút
        btnOptions.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -80,6 +86,7 @@ public class MainChatPage extends AppCompatActivity {
            @Override
            public void onClick(View view) { toggleModelsVisibility(); }
        });
+       // kết thục thiết lập chức năng các nút
 
 
        // xử lý chat của recycle view
@@ -97,16 +104,13 @@ public class MainChatPage extends AppCompatActivity {
 
         // Thái - chọn model
         fillApiList();
-
         listApiModel = findViewById(R.id.lv_apiList);
         listApiModel.setLayoutManager(new LinearLayoutManager(this));
-        listApiModel_Adapter = new RecyclerViewAdapter(apiList, this);
+        listApiModel_Adapter = new ModelChoosing_Adapter(apiList, this);
         listApiModel.setAdapter(listApiModel_Adapter);
         // end thái - chọn model
 
-
     }
-
 
     // toggle more option
     private void toggleOptionsVisibility() {
@@ -125,15 +129,16 @@ public class MainChatPage extends AppCompatActivity {
     }
     // toggle choose model
     private void toggleModelsVisibility() {
-        Log.d("clicked", "clicked");
         if (optionsVisible_Model == false) {
             layoutExpandedModel.setVisibility(View.VISIBLE);
+            etMessageInput.setVisibility(View.GONE);
             btnOptions.setVisibility(View.GONE);
             Micro.setVisibility(View.GONE);
             Enter.setVisibility(View.GONE);
         } else {
            // chooseModel.setVisibility(View.GONE);
             layoutExpandedModel.setVisibility(View.GONE);
+            etMessageInput.setVisibility(View.VISIBLE);
             btnOptions.setVisibility(View.VISIBLE);
             Micro.setVisibility(View.VISIBLE);
             Enter.setVisibility(View.VISIBLE);
@@ -148,8 +153,11 @@ public class MainChatPage extends AppCompatActivity {
         Api a3 = new Api(3, "xAI Grok-2", "Grok-2 mạnh mẽ hơn với khả năng suy luận tốt, tạo hình ảnh ấn tượng và được cung cấp miễn phí.", "https://img.icons8.com/?size=512&id=W864KQKLKmWj&format=png");
 
         apiList.addAll(Arrays.asList(new Api[] {a0, a1, a2, a3}));
-
-
+    }
+    // hàm xử lý gửi tin nhắn
+    private void sendMessage(){
+        String message = etMessageInput.getText().toString();
+//        String modelType =
     }
 
 }

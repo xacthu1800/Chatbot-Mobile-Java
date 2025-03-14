@@ -1,4 +1,4 @@
-package com.example.chatbot_mobile_java.thai.adapters;
+package com.example.chatbot_mobile_java.bin.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,22 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.bin.data.userSend;
-import com.example.chatbot_mobile_java.thai.data.Api;
+import com.example.chatbot_mobile_java.bin.data.Api;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Adapter.MyViewHolder> {
 
     List<Api> apiList;
     Context context;
 
-    public RecyclerViewAdapter(List<Api> apiList, Context context) {
+    public ModelChoosing_Adapter(List<Api> apiList, Context context) {
         this.apiList = apiList;
         this.context = context;
     }
@@ -42,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.itemView.setOnClickListener(v -> {
             userSend.initialize_Type(apiList.get(position).getName().toString());
-            Log.d("bin", "user model AI type: " + userSend.get_Type());
+           Log.d("bin", "user model AI type: " + userSend.get_Type());
 
         });
 
