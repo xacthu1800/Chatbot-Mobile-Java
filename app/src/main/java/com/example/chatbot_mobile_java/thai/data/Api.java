@@ -1,4 +1,4 @@
-package com.example.chatbot_mobile_java.bin.data;
+package com.example.chatbot_mobile_java.thai.data;
 
 public class Api {
     private int id;

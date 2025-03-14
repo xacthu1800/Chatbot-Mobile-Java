@@ -1,19 +1,11 @@
 package com.example.chatbot_mobile_java.bin.activities;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.sax.EndElementListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 //import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,9 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.bin.adapters.RecyclerViewAdapter;
+import com.example.chatbot_mobile_java.thai.adapters.RecyclerViewAdapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
-import com.example.chatbot_mobile_java.bin.data.Api;
+import com.example.chatbot_mobile_java.thai.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 
 import java.util.ArrayList;
