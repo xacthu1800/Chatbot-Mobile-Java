@@ -2,6 +2,7 @@ package com.example.chatbot_mobile_java.bin.activities;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 //import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,8 +23,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.bin.adapters.ModelChoosing_Adapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
+import com.example.chatbot_mobile_java.bin.api.api_controller;
 import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
+import com.example.chatbot_mobile_java.bin.data.clientMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,6 +90,10 @@ public class MainChatPage extends AppCompatActivity {
            @Override
            public void onClick(View view) { toggleModelsVisibility(); }
        });
+        Enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { sendMessage();}
+        });
        // kết thục thiết lập chức năng các nút
 
 
@@ -156,8 +164,32 @@ public class MainChatPage extends AppCompatActivity {
     }
     // hàm xử lý gửi tin nhắn
     private void sendMessage(){
-        String message = etMessageInput.getText().toString();
-//        String modelType =
+        clientMessage.initialize_Text(etMessageInput.getText().toString());
+
+        String text = etMessageInput.getText().toString();
+        String modelApi = clientMessage.get_Type().toString();
+
+        if(text.isEmpty()){
+            Toast.makeText(this, "Vui lòng nhập nội dung", Toast.LENGTH_SHORT).show();
+            return ;
+        }else if(modelApi.isEmpty()){
+            Toast.makeText(this, "Vui lòng chọn mô hình", Toast.LENGTH_SHORT).show();
+        }
+
+        String responseText = api_controller.resolveApiMessage(new clientMessage());
+        etMessageInput.setText("");
+        Log.d("AI type: ", clientMessage.get_Type());
+        Log.d("send message: ", clientMessage.get_Text());
+        Log.d("AI response: ", responseText);
+        clientMessage.initialize_Text("");
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        }, 3000);
+
     }
 
 }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.chatbot_mobile_java.R;
-import com.example.chatbot_mobile_java.bin.data.userSend;
+import com.example.chatbot_mobile_java.bin.data.clientMessage;
 import com.example.chatbot_mobile_java.thai.data.Api;
 
 import java.util.List;
@@ -41,8 +41,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Glide.with(this.context).load(apiList.get(position).getImageURL()).into(holder.iv_apiPic);
 
         holder.itemView.setOnClickListener(v -> {
-            userSend.initialize_Type(apiList.get(position).getName().toString());
-            Log.d("bin", "user model AI type: " + userSend.get_Type());
+            clientMessage.initialize_Type(apiList.get(position).getName().toString());
+            Log.d("bin", "user model AI type: " + clientMessage.get_Type());
 
         });
 

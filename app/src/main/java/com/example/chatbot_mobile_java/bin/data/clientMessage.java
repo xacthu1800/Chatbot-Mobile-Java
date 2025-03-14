@@ -1,6 +1,6 @@
 package com.example.chatbot_mobile_java.bin.data;
 
-public class userSend {
+public class clientMessage {
     public static String modelType;
     public static String clientMessText;
 
