@@ -45,16 +45,17 @@
             android:id="@+id/etMessageInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:maxLines="3"
             android:hint="Nhập tin nhắn"
-            />
+            android:maxLines="3"
+            android:textSize="25dp" />
+
+        // layout khi nhấn vào nút more option " + "
 
         <LinearLayout
-            android:layout_gravity="left"
             android:id="@+id/layoutExpandedOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:orientation="vertical"
             android:padding="16dp"
             android:visibility="gone">
@@ -62,152 +63,170 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="left">
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/setting"
-                        android:background="@drawable/rounded_button"
-                        android:padding="8dp"
-                        android:layout_marginBottom="10dp"/>
+                android:gravity="left"
+                android:orientation="horizontal">
 
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cài đặt"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginLeft="15dp"
-                        android:textSize="22sp"/>
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:padding="8dp"
+                    android:src="@drawable/setting" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Cài đặt"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="left">
+                android:gravity="left"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
 
-                    android:src="@drawable/new_chat"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
+                    android:src="@drawable/new_chat" />
 
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
                     android:text="Cuộc trò chuyện mới"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="left">
+                android:gravity="left"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
 
-                    android:src="@drawable/model"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_button"
                     android:padding="8dp"
 
-                    android:layout_marginTop="10dp"
-                    />
+                    android:src="@drawable/model" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quản lý mô hình"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
-                    android:textSize="22sp"/>
+                    android:layout_marginTop="15dp"
+                    android:text="Quản lý mô hình"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
+        </LinearLayout>
+        // layout khi nhấn vào nút chọn model
+
+        <LinearLayout
+            android:id="@+id/layoutExpandedModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lv_apiList"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:elevation="3dp"
+                android:scrollbars="vertical"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
             android:layout_marginTop="12dp"
-            android:visibility="visible"
-            >
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="visible">
+            // nút more opiton
+
             <ImageButton
                 android:id="@+id/ibtnMoreOption"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/more_option"
-                android:scaleType="centerInside"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/rounded_button"
                 android:padding="8dp"
-                android:layout_marginRight="5dp"
-                />
+                android:scaleType="centerInside"
+                android:src="@drawable/more_option" />
+            // nút chọn model
 
             <LinearLayout
                 android:id="@+id/chooseModel"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/rounded"
                 android:gravity="center_vertical"
-                android:padding="5dp"
-                android:layout_marginRight="5dp">
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/model_ai"
-                    android:layout_marginStart="5dp" />
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/model_ai" />
 
                 <Button
+                    android:id="@+id/btnChooseModel"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:padding="7dp"
-                    android:text="Chọn mô hình"
-                    android:textSize="19dp"
-                    android:textStyle="bold"
-                    android:textAlignment="textStart"
-                    android:gravity="start|center_vertical"
-                    android:background="?android:attr/selectableItemBackground"
                     android:layout_marginEnd="9dp"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="start|center_vertical"
+                    android:padding="7dp"
+                    android:text="Chọn mô hình"
+                    android:textAlignment="textStart"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <ImageButton
                 android:id="@+id/Micro"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/micro"
-                android:scaleType="centerInside"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/rounded_button"
                 android:padding="8dp"
-                android:layout_marginRight="5dp"
-                />
+                android:scaleType="centerInside"
+                android:src="@drawable/micro" />
+            // nút send message
+
             <ImageButton
                 android:id="@+id/Enter"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/send_message"
-                android:scaleType="centerInside"
                 android:background="@drawable/rounded_button_black"
-                />
+                android:scaleType="centerInside"
+                android:src="@drawable/send_message" />
 
         </LinearLayout>
-
-
-
 
     </LinearLayout>
 
