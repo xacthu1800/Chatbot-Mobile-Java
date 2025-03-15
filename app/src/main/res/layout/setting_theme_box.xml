@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    android:background="@drawable/segmented_background"
+    android:padding="4dp"
+    android:elevation="4dp"
+    android:layout_gravity="center">
+
+    <ToggleButton
+        android:id="@+id/btn_system"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_weight="1"
+        android:background="@drawable/segment_left"
+        android:drawableTop="@drawable/system"
+        android:textOff="Hệ thống"
+        android:textOn="Hệ thống"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ToggleButton
+        android:id="@+id/btn_light"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_weight="1"
+        android:background="@drawable/segment_middle"
+        android:drawableTop="@drawable/lightmode"
+        android:textOff="Sáng"
+        android:textOn="Sáng"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ToggleButton
+        android:id="@+id/btn_dark"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_weight="1"
+        android:background="@drawable/segment_right"
+        android:drawableTop="@drawable/nightmode"
+        android:textOff="Tối"
+        android:textOn="Tối"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+</LinearLayout>
