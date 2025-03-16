@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.bin.adapters.ModelChoosing_Adapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
+import com.example.chatbot_mobile_java.bin.api.ApiResponseCallback;
 import com.example.chatbot_mobile_java.bin.api.api_controller;
 import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
@@ -41,14 +42,15 @@ public class MainChatPage extends AppCompatActivity {
 
     private boolean optionsVisible = false;
     private boolean optionsVisible_Model = false;
-    List<Api> apiList = new ArrayList<Api>();
+    private List<Api> apiList = new ArrayList<Api>();
+    private List<chatMessage> messages;
 
     //private RecyclerView rvMessage;
     private RecyclerView listApiModel;
     private RecyclerView.Adapter listApiModel_Adapter;
 
     RecyclerView rvMessages;
-    RecyclerView.Adapter chatAdapter;
+    chat_adapter chatAdapter;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -98,7 +100,7 @@ public class MainChatPage extends AppCompatActivity {
 
 
        // xử lý chat của recycle view
-        List<chatMessage> messages = new ArrayList<>();
+        messages = new ArrayList<>();
         messages.add(new chatMessage("hi i'm client", true));
         messages.add(new chatMessage("hi i'm App", false));
         messages.add(new chatMessage("this is second message from client", true));
@@ -166,30 +168,47 @@ public class MainChatPage extends AppCompatActivity {
     private void sendMessage(){
         clientMessage.initialize_Text(etMessageInput.getText().toString());
 
-        String text = etMessageInput.getText().toString();
-        String modelApi = clientMessage.get_Type().toString();
+        String clientInput = etMessageInput.getText().toString();
+        String modelApi = clientMessage.get_Type();
 
-        if(text.isEmpty()){
+        if(clientInput.isEmpty()){
             Toast.makeText(this, "Vui lòng nhập nội dung", Toast.LENGTH_SHORT).show();
             return ;
         }else if(modelApi.isEmpty()){
             Toast.makeText(this, "Vui lòng chọn mô hình", Toast.LENGTH_SHORT).show();
+            return ;
         }
+        // xử lý lưu input của client và response text của app
+        addMessage(new chatMessage(clientInput, true));
 
-        String responseText = api_controller.resolveApiMessage(new clientMessage());
+        api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
+            @Override
+            public void onSuccess(String response) {
+                runOnUiThread(()->{
+                    addMessage(new chatMessage(response, false));
+                    Log.d("AI response: ", response);
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                runOnUiThread(()->{
+                    addMessage(new chatMessage("Error: " + error, false));
+                    Log.e("AI error: ", error);
+                });
+            }
+        });
+
         etMessageInput.setText("");
         Log.d("AI type: ", clientMessage.get_Type());
         Log.d("send message: ", clientMessage.get_Text());
-        Log.d("AI response: ", responseText);
         clientMessage.initialize_Text("");
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        }, 3000);
-
+        return ;
+    }
+    private void addMessage(chatMessage message){
+        chatAdapter.addMessage(message);
+        rvMessages.scrollToPosition(chatAdapter.getItemCount()-1);
     }
 
 }

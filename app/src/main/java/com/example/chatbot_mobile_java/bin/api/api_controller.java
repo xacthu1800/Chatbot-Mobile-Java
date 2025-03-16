@@ -16,13 +16,13 @@ import retrofit2.Response;
 public class api_controller {
     static final String[] responseText = {""};
 
-    public static String resolveApiMessage(clientMessage message) {
+    public static String resolveApiMessage(clientMessage message, ApiResponseCallback callback) {
 
 
         try {
             switch (message.get_Type()) {
                 case "Gemini 2.0 Pro Experimental":
-                    return handleGeminiApi(message.get_Text());
+                    return handleGeminiApi(message.get_Text(), callback);
                 case "OpenAI GPT-4o-mini":
                     return handleGpt(message.get_Text());
                 case "xAI Grok-2":
@@ -35,7 +35,7 @@ public class api_controller {
         }
     }
 
-    private static String handleGeminiApi(String text) throws Exception{
+    private static String handleGeminiApi(String text, ApiResponseCallback callback) throws Exception{
         RequestModel.Part part = new RequestModel.Part(text);
         RequestModel.Content content = new RequestModel.Content(List.of(part));
         RequestModel requestModel = new RequestModel(List.of(content));
@@ -49,10 +49,11 @@ public class api_controller {
                     ResponseModel result = response.body();
                     // Xử lý kết quả
                     String generatedText = result.getCandidates().get(0).getContent().getParts().get(0).getText();
-                    responseText[0] = generatedText;
+                    callback.onSuccess(generatedText);
+
                 } else {
                     // Xử lý lỗi
-                    responseText[0] = "Error occur onResponse func";
+                    callback.onError("Error: " + response.code());
                     Log.e("API_ERROR", "Lỗi: " + response.code());
                 }
             }
@@ -60,7 +61,7 @@ public class api_controller {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 // Xử lý khi request thất bại
-                responseText[0] = "Error occur in OnFailure func";
+                callback.onError("Request failed: " + t.getMessage());
                 Log.e("API_FAILURE", "Request thất bại: " + t.getMessage());
             }
         });
