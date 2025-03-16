@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="200dp"
     android:orientation="horizontal"
-    android:background="@drawable/segmented_background"
+    android:background="@drawable/segment_background"
     android:padding="4dp"
     android:elevation="4dp"
     android:layout_gravity="center">

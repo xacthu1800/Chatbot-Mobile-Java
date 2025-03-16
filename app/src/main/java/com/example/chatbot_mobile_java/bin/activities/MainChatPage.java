@@ -101,11 +101,6 @@ public class MainChatPage extends AppCompatActivity {
 
        // xử lý chat của recycle view
         messages = new ArrayList<>();
-        messages.add(new chatMessage("hi i'm client", true));
-        messages.add(new chatMessage("hi i'm App", false));
-        messages.add(new chatMessage("this is second message from client", true));
-        messages.add(new chatMessage("this is second message response from app", false));
-
         chatAdapter = new chat_adapter(this, messages);
         rvMessages = findViewById(R.id.rvMessages);
         rvMessages.setLayoutManager(new LinearLayoutManager(this));
@@ -171,14 +166,17 @@ public class MainChatPage extends AppCompatActivity {
         String clientInput = etMessageInput.getText().toString();
         String modelApi = clientMessage.get_Type();
 
-        if(clientInput.isEmpty()){
+        if (clientInput.isEmpty() && modelApi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập nội dung và chọn mô hình", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (clientInput.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập nội dung", Toast.LENGTH_SHORT).show();
-            return ;
-        }else if(modelApi.isEmpty()){
+            return;
+        } else if (modelApi.isEmpty()) {
             Toast.makeText(this, "Vui lòng chọn mô hình", Toast.LENGTH_SHORT).show();
-            return ;
+            return;
         }
-        // xử lý lưu input của client và response text của app
+
         addMessage(new chatMessage(clientInput, true));
 
         api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
