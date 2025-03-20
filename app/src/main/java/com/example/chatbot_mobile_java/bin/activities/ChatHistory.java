@@ -46,11 +46,6 @@ public class ChatHistory extends AppCompatActivity  {
         chatList.addItemToListChat(new history_chat("quân skibidi"));
         Log.d("listChat", chatList.getItematIndexInListChat(0).getChatText().toString());
 
-        rvHistoryChat = findViewById(R.id.rvHistoryChat);
-        rvHistoryChat.setLayoutManager(new LinearLayoutManager(this));
-        historyChatAdapter = new history_chat_adapter(chatList);
-        rvHistoryChat.setAdapter(historyChatAdapter);
-
         sqlListChat = new sql_list_chatMessage();
         sqlListChat = get_listChatMessage();
 
@@ -65,6 +60,12 @@ public class ChatHistory extends AppCompatActivity  {
 //                Log.d("ketqua","  - " + msg.getContent());
 //            }
 //        }
+
+        rvHistoryChat = findViewById(R.id.rvHistoryChat);
+        rvHistoryChat.setLayoutManager(new LinearLayoutManager(this));
+        historyChatAdapter = new history_chat_adapter(chatList, list_conversationid, groupedMessages);
+        rvHistoryChat.setAdapter(historyChatAdapter);
+
 
     }
 
@@ -122,7 +123,6 @@ public class ChatHistory extends AppCompatActivity  {
         for (Integer convId : conversationIds) {
             result.put(convId, new sql_list_chatMessage());
         }
-
         // Duyệt qua tất cả tin nhắn và thêm vào danh sách tương ứng
         for (sql_chatMessage message : list.getListMessage()) {
             int convId = message.getConversationId();

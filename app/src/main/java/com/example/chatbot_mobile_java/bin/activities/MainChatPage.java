@@ -30,6 +30,8 @@ import com.example.chatbot_mobile_java.bin.api.api_controller;
 import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 import com.example.chatbot_mobile_java.bin.data.clientMessage;
+import com.example.chatbot_mobile_java.bin.data.sql_chatMessage;
+import com.example.chatbot_mobile_java.bin.data.sql_list_chatMessage;
 import com.example.chatbot_mobile_java.bin.database.myDatabaseHelper;
 
 import java.util.ArrayList;
@@ -42,8 +44,8 @@ public class MainChatPage extends AppCompatActivity {
     private ImageButton btnOptions, Micro, Enter;
     private Button btnChooseModel;
     private EditText etMessageInput;
-    private boolean optionsVisible = false;
-    private boolean optionsVisible_Model = false;
+    static boolean optionsVisible = false;
+    static boolean optionsVisible_Model = false;
     private List<Api> apiList = new ArrayList<Api>();
     private List<chatMessage> messages;
     private RecyclerView listApiModel;
@@ -73,6 +75,20 @@ public class MainChatPage extends AppCompatActivity {
         Enter = findViewById(R.id.Enter);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
         myDB =new myDatabaseHelper(MainChatPage.this);
+
+        // tiền xử lý để hiện lịch sử chat hoặc empty chat
+        if( sql_list_chatMessage.getIntent_conversationId() == 0 || sql_list_chatMessage.getIntent_listMessage().isEmpty() ){
+            Log.d("get_conversationid", "conversation static not null");
+            messages = new ArrayList<>();
+        }else  {
+            conversationId = sql_list_chatMessage.getIntent_conversationId();
+            messages = new ArrayList<>();
+            List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
+            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
+                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
+                messages.add(chatMsg);
+            }
+        }
 
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -106,7 +122,6 @@ public class MainChatPage extends AppCompatActivity {
 
 
        // xử lý chat của recycle view
-        messages = new ArrayList<>();
         chatAdapter = new chat_adapter(this, messages);
         rvMessages = findViewById(R.id.rvMessages);
         rvMessages.setLayoutManager(new LinearLayoutManager(this));
@@ -121,6 +136,7 @@ public class MainChatPage extends AppCompatActivity {
         listApiModel.setAdapter(listApiModel_Adapter);
         // end thái - chọn model
 
+        rvMessages.scrollToPosition(messages.size() - 1);
     }
 
     // toggle more option
@@ -223,8 +239,9 @@ public class MainChatPage extends AppCompatActivity {
         return (int) (System.currentTimeMillis() / 1000);
     }
 
-
-
+    public static void setModelToggleState(){
+        optionsVisible_Model = !optionsVisible_Model;
+    }
 
 }
 

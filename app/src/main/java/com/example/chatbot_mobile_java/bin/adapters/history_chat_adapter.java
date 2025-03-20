@@ -1,5 +1,7 @@
 package com.example.chatbot_mobile_java.bin.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.ViewGroup;
 
@@ -10,35 +12,64 @@ import android.widget.TextView;
 
 
 import com.example.chatbot_mobile_java.R;
+import com.example.chatbot_mobile_java.bin.activities.MainChatPage;
+import com.example.chatbot_mobile_java.bin.data.clientMessage;
 import com.example.chatbot_mobile_java.bin.data.history_listChat;
+import com.example.chatbot_mobile_java.bin.data.sql_list_chatMessage;
+
+import java.util.List;
+import java.util.Map;
 
 public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adapter.MyViewHolder> {
 
+    List<Integer> conversationIdList;
+    Map<Integer, sql_list_chatMessage> groupedMessageList;
     history_listChat chatList;
 
-    public history_chat_adapter(history_listChat history_listChat) {
+    public history_chat_adapter(
+            history_listChat history_listChat,
+            List<Integer> conversationIdList,
+            Map<Integer, sql_list_chatMessage> groupedMessageList
+            ) {
         this.chatList = history_listChat;
+        this.conversationIdList = conversationIdList;
+        this.groupedMessageList = groupedMessageList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_history, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
-        Log.d("onCreateViewHolder", "run");
         return holder;
     }
 
     @Override
     public void onBindViewHolder(history_chat_adapter.MyViewHolder holder, int position) {
+        sql_list_chatMessage list;
+        list = this.groupedMessageList.get(this.conversationIdList.get(position));
+        if(list == null){
+            holder.ItemChatHistory.setText("No message");
+            Log.d("errrr", "null");
+        }else  {
+            Log.d("errrr", "not null");
+        }
 
-        holder.ItemChatHistory.setText(chatList.getItematIndexInListChat(position).getChatText()) ;
-        Log.d("onbindView holder", "run");
+        holder.ItemChatHistory.setText(list.get_last_textMessage()) ;
+        holder.itemView.setOnClickListener(v -> {
+            Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, MainChatPage.class);
+
+            sql_list_chatMessage.setIntent_conversationId(this.conversationIdList.get(position));
+            sql_list_chatMessage.setIntent_listMessage(this.groupedMessageList.get(this.conversationIdList.get(position)).getListMessage());
+
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        Log.d("getItemCound", "run");
-        return this.chatList.getListChat().size();
+        return this.conversationIdList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
@@ -47,39 +78,6 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
         public MyViewHolder(View itemView){
             super(itemView);
             ItemChatHistory = itemView.findViewById(R.id.tvItemChatHistory);
-            Log.d("MyviewHolder", "run");
         }
     }
 }
-
-//public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adapter.MyViewHolder> {
-//
-//    @NonNull
-//    @Override
-//    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        // Implement this method
-//        return null;
-//    }
-//
-//    // You'll also need to implement the other required methods:
-//    @Override
-//    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-//        // Implement this method
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        // Implement this method
-//        return 0;
-//    }
-//
-//    // Define your ViewHolder as an inner class
-//    public static class MyViewHolder extends RecyclerView.ViewHolder {
-//        // Define your view references here
-//
-//        public MyViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            // Initialize your views here
-//        }
-//    }
-//}
