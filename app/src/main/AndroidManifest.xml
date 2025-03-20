@@ -33,6 +33,8 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".bin.activities.ChatHistory"
+            tools:ignore="DuplicateActivity" />
 
     </application>
 

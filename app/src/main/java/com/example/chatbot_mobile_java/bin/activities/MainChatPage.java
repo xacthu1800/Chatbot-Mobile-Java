@@ -1,6 +1,8 @@
 package com.example.chatbot_mobile_java.bin.activities;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -23,10 +25,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatbot_mobile_java.R;
 import com.example.chatbot_mobile_java.bin.adapters.ModelChoosing_Adapter;
 import com.example.chatbot_mobile_java.bin.adapters.chat_adapter;
+import com.example.chatbot_mobile_java.bin.api.ApiResponseCallback;
 import com.example.chatbot_mobile_java.bin.api.api_controller;
 import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 import com.example.chatbot_mobile_java.bin.data.clientMessage;
+import com.example.chatbot_mobile_java.bin.database.myDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,23 +42,25 @@ public class MainChatPage extends AppCompatActivity {
     private ImageButton btnOptions, Micro, Enter;
     private Button btnChooseModel;
     private EditText etMessageInput;
-
     private boolean optionsVisible = false;
     private boolean optionsVisible_Model = false;
-    List<Api> apiList = new ArrayList<Api>();
-
-    //private RecyclerView rvMessage;
+    private List<Api> apiList = new ArrayList<Api>();
+    private List<chatMessage> messages;
     private RecyclerView listApiModel;
     private RecyclerView.Adapter listApiModel_Adapter;
+    private myDatabaseHelper myDB;
 
     RecyclerView rvMessages;
-    RecyclerView.Adapter chatAdapter;
+    chat_adapter chatAdapter;
+
+    private int conversationId;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
+        conversationId = (int) (System.currentTimeMillis() / 1000);
 
         // khai báo giá trị các View
         etMessageInput = findViewById(R.id.etMessageInput);
@@ -66,6 +72,8 @@ public class MainChatPage extends AppCompatActivity {
         Micro = findViewById(R.id.Micro);
         Enter = findViewById(R.id.Enter);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
+        myDB =new myDatabaseHelper(MainChatPage.this);
+
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -87,8 +95,8 @@ public class MainChatPage extends AppCompatActivity {
        });
 
        btnChooseModel.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) { toggleModelsVisibility(); }
+               @Override
+               public void onClick(View view) { toggleModelsVisibility(); }
        });
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,12 +106,7 @@ public class MainChatPage extends AppCompatActivity {
 
 
        // xử lý chat của recycle view
-        List<chatMessage> messages = new ArrayList<>();
-        messages.add(new chatMessage("hi i'm client", true));
-        messages.add(new chatMessage("hi i'm App", false));
-        messages.add(new chatMessage("this is second message from client", true));
-        messages.add(new chatMessage("this is second message response from app", false));
-
+        messages = new ArrayList<>();
         chatAdapter = new chat_adapter(this, messages);
         rvMessages = findViewById(R.id.rvMessages);
         rvMessages.setLayoutManager(new LinearLayoutManager(this));
@@ -166,31 +169,65 @@ public class MainChatPage extends AppCompatActivity {
     private void sendMessage(){
         clientMessage.initialize_Text(etMessageInput.getText().toString());
 
-        String text = etMessageInput.getText().toString();
-        String modelApi = clientMessage.get_Type().toString();
+        String clientInput = etMessageInput.getText().toString();
+        String modelApi = clientMessage.get_Type();
 
-        if(text.isEmpty()){
+        if (clientInput.isEmpty() && modelApi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập nội dung và chọn mô hình", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (clientInput.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập nội dung", Toast.LENGTH_SHORT).show();
-            return ;
-        }else if(modelApi.isEmpty()){
+            return;
+        } else if (modelApi.isEmpty()) {
             Toast.makeText(this, "Vui lòng chọn mô hình", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        String responseText = api_controller.resolveApiMessage(new clientMessage());
+        addMessage(new chatMessage(clientInput, true));
+        myDB.addChatMessage(conversationId, clientInput, true, get_timestamp());
+
+        api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
+            @Override
+            public void onSuccess(String response) {
+                runOnUiThread(()->{
+                    addMessage(new chatMessage(response, false));
+                    myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
+                    db.addChatMessage(conversationId, response, false, get_timestamp());
+                    Log.d("AI response: ", response);
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                runOnUiThread(()->{
+                    addMessage(new chatMessage("Error: " + error, false));
+                    myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
+                    db.addChatMessage(conversationId, "Error: " + error, false, get_timestamp());
+                    Log.e("AI error: ", error);
+                });
+            }
+        });
+
+//        Log.d("AI type: ", clientMessage.get_Type());
+//        Log.d("send message: ", clientMessage.get_Text());
         etMessageInput.setText("");
-        Log.d("AI type: ", clientMessage.get_Type());
-        Log.d("send message: ", clientMessage.get_Text());
-        Log.d("AI response: ", responseText);
         clientMessage.initialize_Text("");
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        }, 3000);
-
+        return ;
+    }
+    private void addMessage(chatMessage message){
+        chatAdapter.addMessage(message);
+        rvMessages.scrollToPosition(chatAdapter.getItemCount()-1);
     }
 
+    private int get_timestamp(){
+        return (int) (System.currentTimeMillis() / 1000);
+    }
+
+
+
+
 }
+
+
+
 
