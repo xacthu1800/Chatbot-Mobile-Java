@@ -3,12 +3,12 @@ package com.example.chatbot_mobile_java.bin.data;
 public class chatMessage {
     private String content;
     private boolean isCient;
-    private long timestamp;
+    private int timestamp;
 
     public chatMessage(String content, boolean isClient) {
         this.content = content;
         this.isCient  = isClient;
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = (int) (System.currentTimeMillis() / 1000);
     }
 
     public String getContent() {
@@ -19,7 +19,7 @@ public class chatMessage {
         return isCient;
     }
 
-    public long getTimestamp() {
+    public int getTimestamp() {
         return timestamp;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.chatbot_mobile_java.bin.activities;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -28,6 +30,7 @@ import com.example.chatbot_mobile_java.bin.api.api_controller;
 import com.example.chatbot_mobile_java.bin.data.Api;
 import com.example.chatbot_mobile_java.bin.data.chatMessage;
 import com.example.chatbot_mobile_java.bin.data.clientMessage;
+import com.example.chatbot_mobile_java.bin.database.myDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,24 +42,25 @@ public class MainChatPage extends AppCompatActivity {
     private ImageButton btnOptions, Micro, Enter;
     private Button btnChooseModel;
     private EditText etMessageInput;
-
     private boolean optionsVisible = false;
     private boolean optionsVisible_Model = false;
     private List<Api> apiList = new ArrayList<Api>();
     private List<chatMessage> messages;
-
-    //private RecyclerView rvMessage;
     private RecyclerView listApiModel;
     private RecyclerView.Adapter listApiModel_Adapter;
+    private myDatabaseHelper myDB;
 
     RecyclerView rvMessages;
     chat_adapter chatAdapter;
+
+    private int conversationId;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
+        conversationId = (int) (System.currentTimeMillis() / 1000);
 
         // khai báo giá trị các View
         etMessageInput = findViewById(R.id.etMessageInput);
@@ -68,6 +72,8 @@ public class MainChatPage extends AppCompatActivity {
         Micro = findViewById(R.id.Micro);
         Enter = findViewById(R.id.Enter);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
+        myDB =new myDatabaseHelper(MainChatPage.this);
+
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -89,8 +95,8 @@ public class MainChatPage extends AppCompatActivity {
        });
 
        btnChooseModel.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) { toggleModelsVisibility(); }
+               @Override
+               public void onClick(View view) { toggleModelsVisibility(); }
        });
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,12 +184,15 @@ public class MainChatPage extends AppCompatActivity {
         }
 
         addMessage(new chatMessage(clientInput, true));
+        myDB.addChatMessage(conversationId, clientInput, true, get_timestamp());
 
         api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
             @Override
             public void onSuccess(String response) {
                 runOnUiThread(()->{
                     addMessage(new chatMessage(response, false));
+                    myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
+                    db.addChatMessage(conversationId, response, false, get_timestamp());
                     Log.d("AI response: ", response);
                 });
             }
@@ -192,16 +201,17 @@ public class MainChatPage extends AppCompatActivity {
             public void onError(String error) {
                 runOnUiThread(()->{
                     addMessage(new chatMessage("Error: " + error, false));
+                    myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
+                    db.addChatMessage(conversationId, "Error: " + error, false, get_timestamp());
                     Log.e("AI error: ", error);
                 });
             }
         });
 
+//        Log.d("AI type: ", clientMessage.get_Type());
+//        Log.d("send message: ", clientMessage.get_Text());
         etMessageInput.setText("");
-        Log.d("AI type: ", clientMessage.get_Type());
-        Log.d("send message: ", clientMessage.get_Text());
         clientMessage.initialize_Text("");
-
         return ;
     }
     private void addMessage(chatMessage message){
@@ -209,5 +219,15 @@ public class MainChatPage extends AppCompatActivity {
         rvMessages.scrollToPosition(chatAdapter.getItemCount()-1);
     }
 
+    private int get_timestamp(){
+        return (int) (System.currentTimeMillis() / 1000);
+    }
+
+
+
+
 }
+
+
+
 
