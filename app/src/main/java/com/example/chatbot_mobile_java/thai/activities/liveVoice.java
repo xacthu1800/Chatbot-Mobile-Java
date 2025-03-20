@@ -72,7 +72,7 @@ public class liveVoice extends AppCompatActivity {
     private List<Short> pcmData = new ArrayList<>();
     private Thread recordThread;
     private final String MODEL = "models/gemini-2.0-flash-exp";
-    private final String API_KEY = "AIzaSyBIeyvhotVUZCo-pQikb1noVvk8OC5_YgM"; // Replace with your actual API key
+    private final String API_KEY = ""; // Test key: AIzaSyBIeyvhotVUZCo-pQikb1noVvk8OC5_YgM
     private final String HOST = "generativelanguage.googleapis.com";
     private final String URL = "wss://" + HOST + "/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent?key=" + API_KEY;
 
