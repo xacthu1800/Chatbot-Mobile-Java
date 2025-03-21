@@ -124,7 +124,10 @@ public class MainChatPage extends AppCompatActivity {
        // xử lý chat của recycle view
         chatAdapter = new chat_adapter(this, messages);
         rvMessages = findViewById(R.id.rvMessages);
-        rvMessages.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setReverseLayout(true); // Đảo ngược danh sách
+        rvMessages.setLayoutManager(layoutManager);
         rvMessages.setAdapter(chatAdapter);
         // kết thúc xử lý chat của recycle view
 
@@ -177,7 +180,7 @@ public class MainChatPage extends AppCompatActivity {
         Api a0 = new Api(0, "Gemini 2.0 Pro Experimental","Nổi bật với khả năng xử lý thông tin phức tạp, cửa sổ ngữ cảnh rộng, đặc biệt tối ưu cho lập trình và nghiên cứu.", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw");
         Api a1 = new Api(1, "Gemini 2.0 Flash Thinking Experimental","Tập trung vào tốc độ xử lý và khả năng suy luận nhanh, tối ưu hóa chi phí.", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw");
         Api a2 = new Api(2, "OpenAI GPT-4o-mini", "Là một phiên bản nhẹ hơn của GPT-4o, có tốc độ nhanh, tối ưu hóa cho hiệu suất cao với tài nguyên thấp.", "https://play-lh.googleusercontent.com/lmG9HlI0awHie0cyBieWXeNjpyXvHPwDBb8MNOVIyp0P8VEh95AiBHtUZSDVR3HLe3A=w480-h960-rw");
-        Api a3 = new Api(3, "xAI Grok-2", "Grok-2 mạnh mẽ hơn với khả năng suy luận tốt, tạo hình ảnh ấn tượng và được cung cấp miễn phí.", "https://img.icons8.com/?size=512&id=W864KQKLKmWj&format=png");
+        Api a3 = new Api(3, "Claude 3.7", "Claude là AI chatbot của Anthropic, nổi bật với khả năng suy luận tốt, tạo nội dung sáng tạo và đảm bảo an toàn trong phản hồi.", "https://logowik.com/content/uploads/images/claude4477.logowik.com.webp");
 
         apiList.addAll(Arrays.asList(new Api[] {a0, a1, a2, a3}));
     }
