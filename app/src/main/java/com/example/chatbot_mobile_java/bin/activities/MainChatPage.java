@@ -126,7 +126,7 @@ public class MainChatPage extends AppCompatActivity {
         rvMessages = findViewById(R.id.rvMessages);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setReverseLayout(true); // Đảo ngược danh sách
+//        layoutManager.setReverseLayout(true); // Đảo ngược danh sách
         rvMessages.setLayoutManager(layoutManager);
         rvMessages.setAdapter(chatAdapter);
         // kết thúc xử lý chat của recycle view
