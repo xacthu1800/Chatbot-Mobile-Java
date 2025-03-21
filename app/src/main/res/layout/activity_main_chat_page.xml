@@ -146,14 +146,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv_apiList"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:elevation="3dp"
-                android:scrollbars="vertical"
                 android:nestedScrollingEnabled="true"
-                />
+                android:scrollbars="vertical" />
         </LinearLayout>
 
         <LinearLayout
@@ -187,6 +187,7 @@
                 android:padding="5dp">
 
                 <ImageView
+                    android:id="@+id/ivModelImg"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
@@ -199,12 +200,16 @@
                     android:layout_marginEnd="9dp"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:background="@drawable/btn_model_choosing"
+                    android:fontFamily="@font/baloo2"
                     android:gravity="start|center_vertical"
-                    android:padding="7dp"
                     android:text="Chọn mô hình"
                     android:textAlignment="textStart"
-                    android:textSize="19dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    android:maxWidth="150dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:textStyle="bold" />
             </LinearLayout>
 

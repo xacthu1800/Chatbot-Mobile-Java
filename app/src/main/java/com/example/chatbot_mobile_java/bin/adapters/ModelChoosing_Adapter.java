@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -52,12 +53,16 @@ public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Ad
             ImageButton Micro = ((Activity) context).findViewById(R.id.Micro);
             ImageButton Enter = ((Activity) context).findViewById(R.id.Enter);
             EditText etMessageInput = ((Activity) context).findViewById(R.id.etMessageInput);
+            Button btnModel = ((Activity) context).findViewById(R.id.btnChooseModel);
+            ImageView ivModelImg = ((Activity) context).findViewById(R.id.ivModelImg);
             if(linearLayoutContainer.getVisibility() == View.VISIBLE){
                 linearLayoutContainer.setVisibility(View.GONE);
                 btnOptions.setVisibility(View.VISIBLE);
                 Micro.setVisibility(View.VISIBLE);
                 Enter.setVisibility(View.VISIBLE);
                 etMessageInput.setVisibility(View.VISIBLE);
+                btnModel.setText(apiList.get(position).getName());
+                Glide.with((Activity) context).load(apiList.get(position).getImageURL()).into(ivModelImg);
                 MainChatPage.setModelToggleState();
             }else
             {
