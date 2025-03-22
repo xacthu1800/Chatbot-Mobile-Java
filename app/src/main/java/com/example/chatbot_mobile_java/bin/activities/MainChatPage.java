@@ -160,11 +160,13 @@ public class MainChatPage extends AppCompatActivity {
             chooseModel.setVisibility(View.GONE);
             Micro.setVisibility(View.GONE);
             Enter.setVisibility(View.GONE);
+            etMessageInput.setVisibility(View.GONE);
         } else {
             layoutExpandOption.setVisibility(View.GONE);
             chooseModel.setVisibility(View.VISIBLE);
             Micro.setVisibility(View.VISIBLE);
             Enter.setVisibility(View.VISIBLE);
+            etMessageInput.setVisibility(View.VISIBLE);
         }
         optionsVisible = !optionsVisible;
     }
@@ -190,7 +192,7 @@ public class MainChatPage extends AppCompatActivity {
     private void fillApiList() {
         Api a0 = new Api(0, "Gemini 2.0 Pro Experimental","Nổi bật với khả năng xử lý thông tin phức tạp, cửa sổ ngữ cảnh rộng, đặc biệt tối ưu cho lập trình và nghiên cứu.", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw", "2.0 Pro");
         Api a1 = new Api(1, "Gemini 2.0 Flash Thinking Experimental","Tập trung vào tốc độ xử lý và khả năng suy luận nhanh, tối ưu hóa chi phí.", "https://play-lh.googleusercontent.com/Pkwn0AbykyjSuCdSYCbq0dvOqHP-YXcbBLTZ8AOUZhvnRuhUnZ2aJrw_YCf6kVMcZ4PM=w480-h960-rw", "2.0 Flash");
-        Api a2 = new Api(2, "OpenAI GPT-4o-mini", "Là một phiên bản nhẹ hơn của GPT-4o, có tốc độ nhanh, tối ưu hóa cho hiệu suất cao với tài nguyên thấp.", "https://play-lh.googleusercontent.com/lmG9HlI0awHie0cyBieWXeNjpyXvHPwDBb8MNOVIyp0P8VEh95AiBHtUZSDVR3HLe3A=w480-h960-rw", "GPT-4o-mini");
+        Api a2 = new Api(2, "OpenAI GPT-4o-mini", "Là một phiên bản nhẹ hơn của GPT-4o, có tốc độ nhanh, tối ưu hóa cho hiệu suất cao với tài nguyên thấp.", "https://play-lh.googleusercontent.com/lmG9HlI0awHie0cyBieWXeNjpyXvHPwDBb8MNOVIyp0P8VEh95AiBHtUZSDVR3HLe3A=w480-h960-rw", "4o-mini");
         Api a3 = new Api(3, "Claude 3.7", "Claude là AI chatbot của Anthropic, nổi bật với khả năng suy luận tốt, tạo nội dung sáng tạo và đảm bảo an toàn trong phản hồi.", "https://logowik.com/content/uploads/images/claude4477.logowik.com.webp", "Claude 3.7");
 
         apiList.addAll(Arrays.asList(new Api[] {a0, a1, a2, a3}));
