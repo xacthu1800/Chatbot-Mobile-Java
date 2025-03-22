@@ -54,6 +54,9 @@ public class MainChatPage extends AppCompatActivity {
     private RecyclerView.Adapter listApiModel_Adapter;
     private myDatabaseHelper myDB;
 
+    static boolean firstChat = true;
+    static int convIdFirstChat;
+
     RecyclerView rvMessages;
     chat_adapter chatAdapter;
 
@@ -79,10 +82,20 @@ public class MainChatPage extends AppCompatActivity {
         myDB =new myDatabaseHelper(MainChatPage.this);
 
         // tiền xử lý để hiện lịch sử chat hoặc empty chat
-        if( sql_list_chatMessage.getIntent_conversationId() == 0 || sql_list_chatMessage.getIntent_listMessage().isEmpty() ){
+
+
+        if(!firstChat && sql_list_chatMessage.getIntent_conversationId() == 0 && sql_list_chatMessage.getIntent_listMessage().isEmpty() ){
             Log.d("get_conversationid", "conversation static not null");
             messages = new ArrayList<>();
-        }else  {
+        }else if(firstChat || sql_list_chatMessage.getIntent_conversationId() == 0 || sql_list_chatMessage.getIntent_listMessage().isEmpty()){
+            List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(convIdFirstChat).getListMessage();
+            messages = new ArrayList<>();
+            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
+                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
+                messages.add(chatMsg);
+            }
+            Log.d("firstChat", messages.toString());
+        }else{
             conversationId = sql_list_chatMessage.getIntent_conversationId();
             messages = new ArrayList<>();
             List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
@@ -91,6 +104,26 @@ public class MainChatPage extends AppCompatActivity {
                 messages.add(chatMsg);
             }
         }
+
+//        {
+//            conversationId = sql_list_chatMessage.getIntent_conversationId();
+//            messages = new ArrayList<>();
+//            List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
+//            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
+//                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
+//                messages.add(chatMsg);
+//            }
+//        }
+//
+//        if(firstChat){
+//            List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(conversationId).getListMessage();
+//            messages = new ArrayList<>();
+//            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
+//                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
+//                messages.add(chatMsg);
+//            }
+//            Log.d("firstChat", messages.toString());
+//        }
 
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -216,6 +249,9 @@ public class MainChatPage extends AppCompatActivity {
         }
 
         addMessage(new chatMessage(clientInput, true));
+        if(firstChat){
+            convIdFirstChat = conversationId;
+        }
         myDB.addChatMessage(conversationId, clientInput, true, get_timestamp());
 
         api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
@@ -239,7 +275,6 @@ public class MainChatPage extends AppCompatActivity {
                 });
             }
         });
-
 //        Log.d("AI type: ", clientMessage.get_Type());
 //        Log.d("send message: ", clientMessage.get_Text());
         etMessageInput.setText("");
@@ -259,6 +294,13 @@ public class MainChatPage extends AppCompatActivity {
         optionsVisible_Model = !optionsVisible_Model;
     }
 
+    public static boolean isFirstChat() {
+        return firstChat;
+    }
+
+    public static void setFirstChat(boolean firstChat) {
+        MainChatPage.firstChat = firstChat;
+    }
 }
 
 
