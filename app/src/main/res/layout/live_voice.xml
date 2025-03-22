@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chatbot_mobile_java.thai.activities.liveVoice">
+    tools:context="com.example.chatbot_mobile_java.bin.activities.liveVoice">
 
     <LinearLayout
         android:layout_width="match_parent"

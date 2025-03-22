@@ -36,6 +36,8 @@
         <activity android:name=".bin.activities.ChatHistory"
             tools:ignore="DuplicateActivity" />
 
+        <activity android:name=".bin.activities.liveVoice" />
+
     </application>
 
 </manifest>

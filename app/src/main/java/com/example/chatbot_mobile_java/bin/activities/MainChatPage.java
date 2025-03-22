@@ -3,6 +3,8 @@ package com.example.chatbot_mobile_java.bin.activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -110,7 +112,16 @@ public class MainChatPage extends AppCompatActivity {
            }
        });
 
-       btnChooseModel.setOnClickListener(new View.OnClickListener() {
+        Micro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), liveVoice.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+
+        btnChooseModel.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) { toggleModelsVisibility(); }
        });
