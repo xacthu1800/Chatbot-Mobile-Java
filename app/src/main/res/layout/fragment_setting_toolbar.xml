@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Cài đặt"
         android:fontFamily="@font/baloo2"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
