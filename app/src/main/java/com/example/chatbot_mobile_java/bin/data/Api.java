@@ -5,12 +5,14 @@ public class Api {
     private String name;
     private String description;
     private String imageURL;
+    private String shortName;
 
-    public Api(int id, String name, String description, String imageURL) {
+    public Api(int id, String name, String description, String imageURL, String shortName) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.imageURL = imageURL;
+        this.shortName = shortName;
     }
 
     @Override
@@ -21,6 +23,14 @@ public class Api {
                 ", description='" + this.description + '\'' +
                 ", imageURL='" + this.imageURL + '\'' +
                 '}';
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public int getId() {

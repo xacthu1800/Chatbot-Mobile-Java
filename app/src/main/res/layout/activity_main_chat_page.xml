@@ -201,15 +201,15 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_model_choosing"
+                    android:ellipsize="end"
                     android:fontFamily="@font/baloo2"
                     android:gravity="start|center_vertical"
-                    android:text="Chọn mô hình"
+                    android:maxWidth="150dp"
+                    android:singleLine="true"
+                    android:text="mô hình"
                     android:textAlignment="textStart"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
-                    android:maxWidth="150dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
                     android:textStyle="bold" />
             </LinearLayout>
 

@@ -61,7 +61,7 @@ public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Ad
                 Micro.setVisibility(View.VISIBLE);
                 Enter.setVisibility(View.VISIBLE);
                 etMessageInput.setVisibility(View.VISIBLE);
-                btnModel.setText(apiList.get(position).getName());
+                btnModel.setText(apiList.get(position).getShortName());
                 Glide.with((Activity) context).load(apiList.get(position).getImageURL()).into(ivModelImg);
                 MainChatPage.setModelToggleState();
             }else
