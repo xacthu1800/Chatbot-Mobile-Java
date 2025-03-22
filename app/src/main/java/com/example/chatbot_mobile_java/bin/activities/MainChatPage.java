@@ -44,7 +44,7 @@ import java.util.List;
 public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption,layoutExpandedModel, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
-    private Button btnChooseModel;
+    private Button btnChooseModel, btnNewChat;
     private EditText etMessageInput;
     static boolean optionsVisible = false;
     static boolean optionsVisible_Model = false;
@@ -78,16 +78,14 @@ public class MainChatPage extends AppCompatActivity {
         chooseModel = findViewById(R.id.chooseModel);
         Micro = findViewById(R.id.Micro);
         Enter = findViewById(R.id.Enter);
+        btnNewChat = findViewById(R.id.btnNewChat);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
         myDB =new myDatabaseHelper(MainChatPage.this);
 
         // tiền xử lý để hiện lịch sử chat hoặc empty chat
 
-
-        if(!firstChat && sql_list_chatMessage.getIntent_conversationId() == 0 && sql_list_chatMessage.getIntent_listMessage().isEmpty() ){
-            Log.d("get_conversationid", "conversation static not null");
-            messages = new ArrayList<>();
-        }else if(firstChat || sql_list_chatMessage.getIntent_conversationId() == 0 || sql_list_chatMessage.getIntent_listMessage().isEmpty()){
+        messages = new ArrayList<>();
+        if(firstChat){
             List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(convIdFirstChat).getListMessage();
             messages = new ArrayList<>();
             for (sql_chatMessage sqlMsg : sqlListChatMessage) {
@@ -95,7 +93,8 @@ public class MainChatPage extends AppCompatActivity {
                 messages.add(chatMsg);
             }
             Log.d("firstChat", messages.toString());
-        }else{
+        }
+        if(!firstChat && sql_list_chatMessage.getIntent_conversationId() != 0){
             conversationId = sql_list_chatMessage.getIntent_conversationId();
             messages = new ArrayList<>();
             List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
@@ -104,27 +103,6 @@ public class MainChatPage extends AppCompatActivity {
                 messages.add(chatMsg);
             }
         }
-
-//        {
-//            conversationId = sql_list_chatMessage.getIntent_conversationId();
-//            messages = new ArrayList<>();
-//            List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
-//            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
-//                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
-//                messages.add(chatMsg);
-//            }
-//        }
-//
-//        if(firstChat){
-//            List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(conversationId).getListMessage();
-//            messages = new ArrayList<>();
-//            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
-//                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
-//                messages.add(chatMsg);
-//            }
-//            Log.d("firstChat", messages.toString());
-//        }
-
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -138,13 +116,12 @@ public class MainChatPage extends AppCompatActivity {
         // kết thúc khai báo giá trị các View
 
         // thiết lập chức năng các nút
-       btnOptions.setOnClickListener(new View.OnClickListener() {
+        btnOptions.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                toggleOptionsVisibility();
            }
        });
-
         Micro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,8 +129,6 @@ public class MainChatPage extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
-
         btnChooseModel.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) { toggleModelsVisibility(); }
@@ -161,6 +136,16 @@ public class MainChatPage extends AppCompatActivity {
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { sendMessage();}
+        });
+        btnNewChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sql_list_chatMessage.setIntent_listMessage(new ArrayList<>());
+                sql_list_chatMessage.setIntent_conversationId(0);
+                firstChat = false;
+                messages = new ArrayList<>();
+                recreate();
+            }
         });
        // kết thục thiết lập chức năng các nút
 
@@ -301,6 +286,8 @@ public class MainChatPage extends AppCompatActivity {
     public static void setFirstChat(boolean firstChat) {
         MainChatPage.firstChat = firstChat;
     }
+
+
 }
 
 
