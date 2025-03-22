@@ -1,4 +1,4 @@
-package com.example.chatbot_mobile_java.thai.activities;
+package com.example.chatbot_mobile_java.bin.activities;
 
 import com.example.chatbot_mobile_java.R;
 import android.Manifest;
@@ -16,10 +16,8 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.util.Base64;
 import android.util.Log;
 import android.util.Size;
@@ -36,7 +34,6 @@ import com.google.android.material.button.MaterialButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
@@ -45,7 +42,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
