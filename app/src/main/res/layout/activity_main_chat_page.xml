@@ -18,6 +18,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMessages"
+        style="@style/VIEW"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/chat_toolBar"
@@ -30,10 +31,10 @@
 
     <LinearLayout
         android:id="@+id/layoutMessageInput"
+        style="@style/SCREEN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rvMessages"
-        android:background="@drawable/rounded_layout_background"
         android:orientation="vertical"
         android:padding="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,9 +43,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
+            style="@style/TEXT"
             android:id="@+id/etMessageInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo2"
             android:hint="Nhập tin nhắn"
             android:maxLines="3"
             android:textSize="25dp" />
@@ -67,25 +70,28 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    style="@style/OPTION"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/rounded_button"
                     android:padding="8dp"
-                    android:src="@drawable/setting" />
+                    />
 
                 <Button
+                    android:id="@+id/btnOption"
+                    style="@style/OPTION_BUTTON"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Cài đặt"
-                    android:textSize="16sp"
-                    android:gravity="center|left"
                     android:background="@drawable/btn_model_choosing"
+                    android:gravity="center|left"
+                    android:text="Cài đặt"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -95,30 +101,28 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    style="@style/NEW"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/rounded_button"
-                    android:padding="8dp"
-                    android:src="@drawable/new_chat" />
+                    android:padding="6dp"
+                    />
 
 
                 <Button
+                    android:id="@+id/btnNewChat"
+                    style="@style/NEW_BUTTON"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Cuộc trò chuyện mới"
-                    android:textSize="16sp"
+                    android:textSize="19sp"
                     android:gravity="center|left"
-                    android:background="@drawable/btn_model_choosing"
-                    android:textColor="@android:color/black"
                     android:textStyle="bold"
                     />
             </LinearLayout>
-
 
 
         </LinearLayout>
@@ -134,13 +138,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv_apiList"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="500dp"
                 android:elevation="3dp"
                 android:nestedScrollingEnabled="true"
                 android:scrollbars="vertical" />
         </LinearLayout>
 
         <LinearLayout
+            style="@style/VIEW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -150,72 +155,72 @@
             // nút more opiton
 
             <ImageButton
+                style="@style/MORE_OPTION"
                 android:id="@+id/ibtnMoreOption"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/rounded_button"
-                android:padding="8dp"
+                android:layout_marginRight="10dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/more_option" />
+                />
             // nút chọn model
 
             <LinearLayout
+                style="@style/MODEL_LAYOUT"
                 android:id="@+id/chooseModel"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/rounded"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="5dp">
 
                 <ImageView
+                    style="@style/MODEL1"
                     android:id="@+id/ivModelImg"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/model_ai" />
+                    />
 
                 <Button
+                    style="@style/MODEL2"
                     android:id="@+id/btnChooseModel"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="9dp"
                     android:layout_marginBottom="1dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_model_choosing"
-                    android:textColor="@android:color/black"
                     android:ellipsize="end"
-                    android:fontFamily="@font/baloo2"
                     android:gravity="start|center_vertical"
                     android:maxWidth="150dp"
                     android:singleLine="true"
                     android:text="mô hình"
                     android:textAlignment="textStart"
-
-                    android:textSize="16dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <ImageButton
+                style="@style/MICRO"
                 android:id="@+id/Micro"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/rounded_button"
+                android:layout_marginRight="10dp"
                 android:padding="8dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/micro" />
+                />
             // nút send message
 
             <ImageButton
+                style="@style/SEND"
                 android:id="@+id/Enter"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/rounded_button_black"
+                android:padding="10dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/send_message" />
+                />
 
         </LinearLayout>
 

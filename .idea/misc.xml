@@ -3,7 +3,75 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/activity_main_chat_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ai_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/app_chat_message.xml" value="0.1455" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/app_chat_message_black.xml" value="0.1455" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/btn_model_choosing.xml" value="0.162" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/camera.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/camera_black.xml" value="0.1455" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/chat_history_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/chat_history_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/client_chat_message.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/client_chat_message_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/close.xml" value="0.1455" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/close_black.xml" value="0.1455" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_baseline_select_all_24.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/icon_model.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/key.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/key_icon.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/key_icon_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/left_arrow_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/left_arrow_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/lightmode.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/lightmode_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/micro.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/micro_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/micro_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/model_ai_icon.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/model_ai_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/more_option_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/more_option_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/new_chat_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/new_chat_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/nightmode.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/nightmode_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded.xml" value="0.162" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_black.xml" value="0.162" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_layout_background.xml" value="0.1375" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_layout_background_black.xml" value="0.1375" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/save.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/save_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_background.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_background_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_left.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_left_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_middle.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_middle_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_right.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_right_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/send_arrow.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/send_arrow_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/setting_icon.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/setting_icon_black.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/system.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/system_black.xml" value="0.143" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/activity_chat_history.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/activity_main_chat_page.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_chat_history_toolbar.xml" value="0.4" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_setting_toolbar.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_toolbar.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/item_app_chat_message.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/item_chat_history.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/item_client_chat_message.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/live_voice.xml" value="0.22192028985507245" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/one_line_api.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/setting_theme_box.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/test_constraint_layout.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/layout/theme_page.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1145" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1145" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot/Chatbot-Mobile-Java/app/src/main/res/drawable/icon_model.xml" value="0.1145" />

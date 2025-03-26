@@ -35,6 +35,10 @@ import com.example.chatbot_mobile_java.bin.data.clientMessage;
 import com.example.chatbot_mobile_java.bin.data.sql_chatMessage;
 import com.example.chatbot_mobile_java.bin.data.sql_list_chatMessage;
 import com.example.chatbot_mobile_java.bin.database.myDatabaseHelper;
+import android.content.SharedPreferences;
+import android.widget.ToggleButton;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,15 +48,23 @@ import java.util.List;
 public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption,layoutExpandedModel, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
-    private Button btnChooseModel;
+
+    private Button btnChooseModel, btnOption, modeButton, btnNewChat;
+    private ToggleButton btnDark, btnLight;
     private EditText etMessageInput;
-    static boolean optionsVisible = false;
+    static boolean optionsVisible = false, isDarkMode;
     static boolean optionsVisible_Model = false;
     private List<Api> apiList = new ArrayList<Api>();
     private List<chatMessage> messages;
     private RecyclerView listApiModel;
     private RecyclerView.Adapter listApiModel_Adapter;
     private myDatabaseHelper myDB;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+
+    static boolean firstChat = true;
+    static int convIdFirstChat;
 
     RecyclerView rvMessages;
     chat_adapter chatAdapter;
@@ -67,22 +79,37 @@ public class MainChatPage extends AppCompatActivity {
         conversationId = (int) (System.currentTimeMillis() / 1000);
 
         // khai báo giá trị các View
+        btnLight = findViewById(R.id.btn_light);
+        btnDark = findViewById(R.id.btn_dark);
         etMessageInput = findViewById(R.id.etMessageInput);
         btnChooseModel = findViewById(R.id.btnChooseModel);
+        btnOption = findViewById(R.id.btnOption);
         btnOptions = findViewById(R.id.ibtnMoreOption);
         layoutExpandOption = findViewById(R.id.layoutExpandedOptions);
         layoutExpandedModel = findViewById(R.id.layoutExpandedModel);
         chooseModel = findViewById(R.id.chooseModel);
         Micro = findViewById(R.id.Micro);
         Enter = findViewById(R.id.Enter);
+        btnNewChat = findViewById(R.id.btnNewChat);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
         myDB =new myDatabaseHelper(MainChatPage.this);
 
+
+
+
         // tiền xử lý để hiện lịch sử chat hoặc empty chat
-        if( sql_list_chatMessage.getIntent_conversationId() == 0 || sql_list_chatMessage.getIntent_listMessage().isEmpty() ){
-            Log.d("get_conversationid", "conversation static not null");
+
+        messages = new ArrayList<>();
+        if(firstChat){
+            List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(convIdFirstChat).getListMessage();
             messages = new ArrayList<>();
-        }else  {
+            for (sql_chatMessage sqlMsg : sqlListChatMessage) {
+                chatMessage chatMsg = new chatMessage(sqlMsg.getContent(), sqlMsg.isClient());
+                messages.add(chatMsg);
+            }
+            Log.d("firstChat", messages.toString());
+        }
+        if(!firstChat && sql_list_chatMessage.getIntent_conversationId() != 0){
             conversationId = sql_list_chatMessage.getIntent_conversationId();
             messages = new ArrayList<>();
             List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
@@ -91,7 +118,6 @@ public class MainChatPage extends AppCompatActivity {
                 messages.add(chatMsg);
             }
         }
-
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -105,13 +131,12 @@ public class MainChatPage extends AppCompatActivity {
         // kết thúc khai báo giá trị các View
 
         // thiết lập chức năng các nút
-       btnOptions.setOnClickListener(new View.OnClickListener() {
+        btnOptions.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                toggleOptionsVisibility();
            }
        });
-
         Micro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +146,14 @@ public class MainChatPage extends AppCompatActivity {
         });
 
 
+        btnOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), UI.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
         btnChooseModel.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) { toggleModelsVisibility(); }
@@ -128,6 +161,16 @@ public class MainChatPage extends AppCompatActivity {
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { sendMessage();}
+        });
+        btnNewChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sql_list_chatMessage.setIntent_listMessage(new ArrayList<>());
+                sql_list_chatMessage.setIntent_conversationId(0);
+                firstChat = false;
+                messages = new ArrayList<>();
+                recreate();
+            }
         });
        // kết thục thiết lập chức năng các nút
 
@@ -152,6 +195,7 @@ public class MainChatPage extends AppCompatActivity {
 
         rvMessages.scrollToPosition(messages.size() - 1);
     }
+
 
     // toggle more option
     private void toggleOptionsVisibility() {
@@ -216,6 +260,9 @@ public class MainChatPage extends AppCompatActivity {
         }
 
         addMessage(new chatMessage(clientInput, true));
+        if(firstChat){
+            convIdFirstChat = conversationId;
+        }
         myDB.addChatMessage(conversationId, clientInput, true, get_timestamp());
 
         api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
@@ -239,7 +286,6 @@ public class MainChatPage extends AppCompatActivity {
                 });
             }
         });
-
 //        Log.d("AI type: ", clientMessage.get_Type());
 //        Log.d("send message: ", clientMessage.get_Text());
         etMessageInput.setText("");
@@ -258,6 +304,15 @@ public class MainChatPage extends AppCompatActivity {
     public static void setModelToggleState(){
         optionsVisible_Model = !optionsVisible_Model;
     }
+
+    public static boolean isFirstChat() {
+        return firstChat;
+    }
+
+    public static void setFirstChat(boolean firstChat) {
+        MainChatPage.firstChat = firstChat;
+    }
+
 
 }
 

@@ -1,60 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="200dp"
-    android:orientation="horizontal"
-    android:background="@drawable/segment_background"
-    android:padding="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:elevation="4dp"
-    android:layout_gravity="center">
+    android:padding="4dp">
 
-    <ToggleButton
-        android:id="@+id/btn_system"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_weight="1"
-        android:background="@drawable/segment_left"
-        android:drawableTop="@drawable/system"
-        android:textOff="Hệ thống"
-        android:textOn="Hệ thống"
-        android:paddingTop="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+    <fragment
+        android:id="@+id/chat_toolBar"
+        android:name="com.example.chatbot_mobile_java.bin.fragments.toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/btn_light"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_weight="1"
-        android:background="@drawable/segment_middle"
-        android:drawableTop="@drawable/lightmode"
-        android:textOff="Sáng"
-        android:textOn="Sáng"
-        android:paddingTop="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_toolBar"
+        android:orientation="vertical">
 
-    <ToggleButton
-        android:id="@+id/btn_dark"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_weight="1"
-        android:background="@drawable/segment_right"
-        android:drawableTop="@drawable/nightmode"
-        android:textOff="Tối"
-        android:textOn="Tối"
-        android:paddingTop="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <ImageView
+                style="@style/API"
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+            </ImageView>
+                <TextView
+                    style="@style/API_TEXT"
+                    android:layout_width="350dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="6dp"
+                    android:gravity="center|left"
+                    android:text="API Key"
+                    android:textStyle="bold">
+                </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+            <EditText
+                style="@style/API_EDIT"
+                android:layout_width="310dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="20dp"
+                android:gravity="center|left"
+                android:hint="API Key"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                >
+            </EditText>
+
+            <ImageButton
+                style="@style/API_INPUT"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_width="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+            </ImageButton>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        style="@style/SEGMENT_BACKGROUND"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ToggleButton
+            android:id="@+id/btn_system"
+            style="@style/TOGGLE_LEFT"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:textOff="Hệ thống"
+            android:textOn="Hệ thống"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ToggleButton
+            android:id="@+id/btn_light"
+            style="@style/TOGGLE_MID"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:textOff="Sáng"
+            android:textOn="Sáng"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ToggleButton
+            android:id="@+id/btn_dark"
+            style="@style/TOGGLE_RIGHT"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:textOff="Tối"
+            android:textOn="Tối"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

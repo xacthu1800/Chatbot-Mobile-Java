@@ -62,6 +62,8 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
             sql_list_chatMessage.setIntent_conversationId(this.conversationIdList.get(position));
             sql_list_chatMessage.setIntent_listMessage(this.groupedMessageList.get(this.conversationIdList.get(position)).getListMessage());
 
+            MainChatPage.setFirstChat(false);
+
             context.startActivity(intent);
         });
 

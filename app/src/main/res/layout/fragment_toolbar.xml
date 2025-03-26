@@ -8,14 +8,13 @@
 
 
     <ImageButton
+        style="@style/HISTORY_BUTTON"
         android:id="@+id/imgBtnToolbar"
         android:layout_width="50dp"
         android:layout_height="69dp"
         android:layout_marginStart="24dp"
         android:background="@null"
         android:scaleType="fitCenter"
-
-        android:src="@drawable/chat_history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

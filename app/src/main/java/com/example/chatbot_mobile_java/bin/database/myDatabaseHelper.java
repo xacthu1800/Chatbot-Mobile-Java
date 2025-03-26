@@ -5,9 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.example.chatbot_mobile_java.bin.data.sql_chatMessage;
+import com.example.chatbot_mobile_java.bin.data.sql_list_chatMessage;
+
+import java.util.List;
 
 public class myDatabaseHelper extends SQLiteOpenHelper {
     private Context context;
@@ -56,10 +62,34 @@ public class myDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_NAME, null, cv);
         if(result == -1){
-            Toast.makeText(context, "False inserted", Toast.LENGTH_SHORT).show();
+            Log.d("addChatMessage","Fail inserted");
+            //Toast.makeText(context, "Fail inserted", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Success inserted", Toast.LENGTH_SHORT).show();
+            Log.d("addChatMessage","Success inserted");
+            //Toast.makeText(context, "Success inserted", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public sql_list_chatMessage getChatsByConversationId(int conversationId){
+        sql_list_chatMessage chatList = new sql_list_chatMessage();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_CONVERSATION_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new  String[]{String.valueOf(conversationId)});
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
+                int convId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CONVERSATION_ID));
+                String content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT));
+                boolean isClient = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_CLIENT)) == 1;
+                int timestamp = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TIMESTAMP));
+
+                // Tạo đối tượng ChatMessage (giả định bạn có lớp này)
+                sql_chatMessage chat = new sql_chatMessage(id, convId, content, isClient, (int) (System.currentTimeMillis() / 1000));
+                chatList.add(chat);
+            } while (cursor.moveToNext());
+        }
+
+        return chatList;
     }
 
     public Cursor readAllData(){
