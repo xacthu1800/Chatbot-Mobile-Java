@@ -45,10 +45,10 @@
             android:id="@+id/etMessageInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo2"
             android:hint="Nhập tin nhắn"
             android:maxLines="3"
-            android:textSize="25dp"
-            android:fontFamily="@font/baloo2" />
+            android:textSize="25dp" />
 
         // layout khi nhấn vào nút more option " + "
 
@@ -80,13 +80,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Cài đặt"
-                    android:textSize="16sp"
-                    android:gravity="center|left"
                     android:background="@drawable/btn_model_choosing"
+                    android:gravity="center|left"
+                    android:text="Cài đặt"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -111,15 +111,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Cuộc trò chuyện mới"
-                    android:textSize="16sp"
-                    android:gravity="center|left"
                     android:background="@drawable/btn_model_choosing"
+                    android:gravity="center|left"
+                    android:text="Cuộc trò chuyện mới"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-
 
 
         </LinearLayout>
@@ -186,16 +185,16 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_model_choosing"
-                    android:textColor="@android:color/black"
                     android:ellipsize="end"
                     android:fontFamily="@font/baloo2"
-                    android:textStyle="bold"
                     android:gravity="start|center_vertical"
                     android:maxWidth="150dp"
                     android:singleLine="true"
                     android:text="mô hình"
                     android:textAlignment="textStart"
-                    android:textSize="18dp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <ImageButton
