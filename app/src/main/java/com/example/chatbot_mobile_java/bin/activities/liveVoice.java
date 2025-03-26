@@ -1,6 +1,7 @@
 package com.example.chatbot_mobile_java.bin.activities;
 
 import com.example.chatbot_mobile_java.R;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
 import android.hardware.camera2.CameraManager;
+
 import com.google.android.material.button.MaterialButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,7 +70,7 @@ public class liveVoice extends AppCompatActivity {
     private List<Short> pcmData = new ArrayList<>();
     private Thread recordThread;
     private final String MODEL = "models/gemini-2.0-flash-exp";
-    private final String API_KEY = ""; // Test key: AIzaSyBIeyvhotVUZCo-pQikb1noVvk8OC5_YgM
+    static String API_KEY = "AIzaSyBIeyvhotVUZCo-pQikb1noVvk8OC5_YgM"; // Test key: AIzaSyBIeyvhotVUZCo-pQikb1noVvk8OC5_YgM
     private final String HOST = "generativelanguage.googleapis.com";
     private final String URL = "wss://" + HOST + "/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent?key=" + API_KEY;
 
@@ -143,6 +145,10 @@ public class liveVoice extends AppCompatActivity {
         connect();
     }
 
+    public static void setApiKey(String apiKey) {
+        API_KEY = apiKey;
+    }
+
     private final TextureView.SurfaceTextureListener surfaceTextureListener = new TextureView.SurfaceTextureListener() {
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -152,7 +158,8 @@ public class liveVoice extends AppCompatActivity {
         }
 
         @Override
-        public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {}
+        public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+        }
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
@@ -163,7 +170,8 @@ public class liveVoice extends AppCompatActivity {
         }
 
         @Override
-        public void onSurfaceTextureUpdated(SurfaceTexture surface) {}
+        public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+        }
     };
 
     private void startCameraPreview() {
@@ -281,6 +289,8 @@ public class liveVoice extends AppCompatActivity {
             Log.e("Camera", "Error starting preview repeat request", e);
         }
     }
+
+
 
     private void closeCamera() {
         if (cameraCaptureSession != null) {
@@ -611,6 +621,16 @@ public class liveVoice extends AppCompatActivity {
     private void startAudioInput() {
         if (isRecording) return;
         isRecording = true;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         audioRecord = new AudioRecord(
                 MediaRecorder.AudioSource.VOICE_COMMUNICATION,
                 AUDIO_SAMPLE_RATE,
