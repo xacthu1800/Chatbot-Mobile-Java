@@ -113,19 +113,34 @@
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/fragment_toolbar.xml" value="0.3625" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/item_chat_history.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/ChatbotMobileJava2/app/src/main/res/layout/test_constraint_layout.xml" value="0.5" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background.xml" value="0.165" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background_black.xml" value="0.165" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/app_chat_message.xml" value="0.165" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/app_chat_message_black.xml" value="0.165" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/baseline_camera_24.xml" value="0.1375" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/baseline_equalizer_24.xml" value="0.1375" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/baseline_equalizer_24_static.xml" value="0.1375" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/baseline_error_24.xml" value="0.1375" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/btn_model_choosing.xml" value="0.1" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/client_chat_message.xml" value="0.1" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/client_chat_message_black.xml" value="0.165" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/model_ai.xml" value="0.1" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/model_ai_icon.xml" value="0.165" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/model_ai_icon_black.xml" value="0.165" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button.xml" value="0.1355" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/rounded_button_black.xml" value="0.1355" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/drawable/segment_background.xml" value="0.1" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/activity_api.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/activity_chat_history.xml" value="0.2" />
-        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/activity_main_chat_page.xml" value="0.3625" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/activity_main_chat_page.xml" value="0.264" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_chat_history_toolbar.xml" value="0.24728260869565216" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_setting_toolbar.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/fragment_toolbar.xml" value="0.1" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/item_app_chat_message.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/item_chat_history.xml" value="0.2" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/item_client_chat_message.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/live_voice.xml" value="0.2391304347826087" />
-        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/one_line_api.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/one_line_api.xml" value="0.1" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/setting_theme_box.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/sherl/OneDrive - Naofunyan/Documents/Lab TH/Chatbot-Mobile-Java/app/src/main/res/layout/test_constraint_layout.xml" value="0.10989583333333333" />
       </map>

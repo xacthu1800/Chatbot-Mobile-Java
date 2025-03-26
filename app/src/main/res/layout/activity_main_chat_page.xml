@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/chat_toolBar"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/layoutMessageInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,29 +68,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
 
                 <ImageView
                     style="@style/OPTION"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
-                    android:padding="8dp"
+                    android:padding="6dp"
                     />
 
                 <Button
                     android:id="@+id/btnOption"
                     style="@style/OPTION_BUTTON"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/btn_model_choosing"
                     android:gravity="center|left"
                     android:text="Cài đặt"
                     android:textAllCaps="false"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/baloo2"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -98,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <ImageView
                     style="@style/NEW"
@@ -106,7 +110,7 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:padding="6dp"
+                    android:padding="7dp"
                     />
 
 
@@ -116,12 +120,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="6dp"
                     android:text="Cuộc trò chuyện mới"
-                    android:textSize="19sp"
+                    android:textAllCaps="false"
+                    android:textSize="22sp"
                     android:gravity="center|left"
-                    android:textStyle="bold"
-                    />
+                    android:fontFamily="@font/baloo2"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -138,7 +143,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv_apiList"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:elevation="3dp"
                 android:nestedScrollingEnabled="true"
                 android:scrollbars="vertical" />
@@ -195,9 +200,8 @@
                     android:gravity="start|center_vertical"
                     android:maxWidth="150dp"
                     android:singleLine="true"
-                    android:text="mô hình"
+                    android:text="Mô hình"
                     android:textAlignment="textStart"
-                    android:textColor="@android:color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
