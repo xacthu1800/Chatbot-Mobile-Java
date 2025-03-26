@@ -19,88 +19,113 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_toolBar"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/chat_toolBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 style="@style/API"
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                >
-            </ImageView>
-                <TextView
-                    style="@style/API_TEXT"
-                    android:layout_width="350dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="6dp"
-                    android:gravity="center|left"
-                    android:text="API Key"
-                    android:textStyle="bold">
-                </TextView>
+                android:layout_weight="1"></ImageView>
+
+            <TextView
+                style="@style/API_TEXT"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center|left"
+                android:padding="6dp"
+                android:text="API Key"
+                android:textStyle="bold"></TextView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="horizontal">
+
             <EditText
-                style="@style/API_EDIT"
                 android:id="@+id/etApiKey"
+                style="@style/API_EDIT"
                 android:layout_width="310dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:paddingLeft="20dp"
                 android:gravity="center|left"
                 android:hint="API Key"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                >
-            </EditText>
+                android:paddingLeft="20dp"
+                android:textStyle="bold"></EditText>
 
             <ImageButton
-                style="@style/API_INPUT"
                 android:id="@+id/btnSubmitApiKey"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                style="@style/API_INPUT"
                 android:layout_width="10dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                >
-            </ImageButton>
+                android:layout_weight="1" />
         </LinearLayout>
 
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivSystemIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="System Interface Icon"
+            android:src="@drawable/ic_system" />
+
+        <TextView
+            android:id="@+id/tvSystemInterface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giao diện hệ thống"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout"
-        style="@style/SEGMENT_BACKGROUND"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="152dp"
         android:elevation="4dp"
         android:orientation="horizontal"
         android:padding="4dp"
@@ -116,11 +141,11 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingLeft="8dp"
-            android:paddingTop="8dp"
+            android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:textOff="Hệ thống"
             android:textOn="Hệ thống"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ToggleButton
@@ -130,12 +155,12 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:textOff="Sáng"
             android:textOn="Sáng"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ToggleButton
@@ -146,11 +171,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingLeft="8dp"
-            android:paddingTop="8dp"
+            android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:textOff="Tối"
             android:textOn="Tối"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,43 +32,72 @@ public class UI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_theme_box);
+        getSupportActionBar().hide();
+
         //getSupportActionBar().hide();
-        btn_System = findViewById(R.id.btn_system);
         etApiKey = findViewById(R.id.etApiKey);
         btnSubmitApiKey = findViewById(R.id.btnSubmitApiKey);
         btnDark = findViewById(R.id.btn_dark);
         btnLight = findViewById(R.id.btn_light);
+        btn_System = findViewById(R.id.btn_system);
 
+//        sharedPreferences = peekAvailableContext().getSharedPreferences("MODE", Context.MODE_PRIVATE);
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMODE = sharedPreferences.getBoolean("night", false);
 
-        if(nightMODE){
-            btnDark.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
+        // Use a single SharedPreferences for theme mode
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+
+        // Track theme mode with an enum or integer for more precise tracking
+        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Set initial theme based on saved preference
+        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
+
         btnDark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!nightMODE){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", true);
-                    editor.apply();
-                }
-            }
-        });
-        btnLight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(nightMODE) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", false);
-                    editor.apply();
-                }
+                Toast.makeText(view.getContext(), "Night mode", Toast.LENGTH_SHORT).show();
+
+                // Always set to night mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                // Save the current mode
+                editor = sharedPreferences.edit();
+                editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_YES);
+                editor.apply();
             }
         });
 
+        btnLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Light mode", Toast.LENGTH_SHORT).show();
+
+                // Always set to light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+                // Save the current mode
+                editor = sharedPreferences.edit();
+                editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+                editor.apply();
+            }
+        });
+
+        btn_System.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "System theme", Toast.LENGTH_SHORT).show();
+
+                // Set to follow system mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+                // Save the current mode
+                editor = sharedPreferences.edit();
+                editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                editor.apply();
+            }
+        });
         btnSubmitApiKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,45 +115,7 @@ public class UI extends AppCompatActivity {
             }
         });
 
-        btn_System.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
 
-
-
-//                switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK ) {
-//                    case Configuration.UI_MODE_NIGHT_YES:
-//                        Toast.makeText(view.getContext(), "dark theme", Toast.LENGTH_SHORT).show();
-//                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                        break;
-//                    case Configuration.UI_MODE_NIGHT_NO:
-//                        Toast.makeText(view.getContext(), "light theme", Toast.LENGTH_SHORT).show();
-//                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                        break;
-//                }
-//
-//                editor.apply();
-
-
-                UiModeManager uiModeManager = (UiModeManager) getSystemService(UI_MODE_SERVICE);
-                boolean isLightTheme = (uiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_NO);
-
-                if (isLightTheme) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", false);
-                    editor.apply();
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", true);
-                    editor.apply();
-                }
-
-            }
-        });
 
     }
 }
