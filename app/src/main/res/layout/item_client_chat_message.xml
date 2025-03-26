@@ -13,7 +13,7 @@
         android:layout_marginEnd="25dp"
         android:background="@drawable/client_chat_message"
         android:maxWidth="300dp"
-        android:padding="16dp"
+        android:padding="20dp"
         android:text="Nguyen Van Bin Skibidi zfsdffasdasdffasdf fasdffasd asdf asd ?"
         android:textSize="20sp"
         android:fontFamily="@font/baloo2"
