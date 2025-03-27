@@ -76,11 +76,10 @@
 
     <style name="MODEL1">
         <item name="android:background">@drawable/btn_model_choosing</item>
-        <item name="android:src">@drawable/model_ai_icon_black</item>
+        <item name="android:src">@drawable/model_white</item>
     </style>
     <style name="MODEL2">
         <item name="android:background">@drawable/btn_model_choosing</item>
-        <item name="android:src">@drawable/model_ai</item>
         <item name="android:textColor">#FFF</item>
     </style>
     <style name="MODEL_LAYOUT">
@@ -143,5 +142,17 @@
 
     <style name="API_EDIT">
         <item name="android:background">@drawable/api_background_black</item>
+    </style>
+
+    <style name="SYSTEM_THEME">
+        <item name="android:src">@drawable/ic_system_black</item>
+    </style>
+
+    <style name="CLOSE">
+        <item name="android:src">@drawable/close_black</item>
+    </style>
+
+    <style name="CLOSE_TEXT">
+        <item name="android:textColor">#FFF</item>
     </style>
 </resources>

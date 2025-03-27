@@ -91,7 +91,6 @@
     </style>
     <style name="MODEL2">
         <item name="android:background">@drawable/btn_model_choosing</item>
-        <item name="android:src">@drawable/model_white</item>
         <item name="android:textColor">#000</item>
 
     </style>
@@ -155,5 +154,17 @@
 
     <style name="API_EDIT">
         <item name="android:background">@drawable/api_background</item>
+    </style>
+
+    <style name="SYSTEM_THEME">
+        <item name="android:src">@drawable/ic_system</item>
+    </style>
+
+    <style name="CLOSE">
+        <item name="android:src">@drawable/close</item>
+    </style>
+
+    <style name="CLOSE_TEXT">
+        <item name="android:textColor">#000</item>
     </style>
 </resources>
