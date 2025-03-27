@@ -7,30 +7,30 @@
     tools:context=".bin.fragments.chat_history_toolbar">
 
     <TextView
-        style="@style/TEXT"
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        style="@style/TEXT"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Lịch sử"
         android:fontFamily="@font/baloo2"
+        android:gravity="center"
+        android:text="Lịch sử"
+        android:textSize="35dp"
         android:textStyle="bold"
-        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        style="@style/ARROW"
         android:id="@+id/imgBtnBack"
+        style="@style/ARROW"
         android:layout_width="50dp"
         android:layout_height="69dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
