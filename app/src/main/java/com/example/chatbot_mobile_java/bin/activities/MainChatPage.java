@@ -76,6 +76,12 @@ public class MainChatPage extends AppCompatActivity {
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
+        // tiền sử lý màu chủ đề là light khi mới khởi động hệ thống
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
+        //
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat_page);
         getSupportActionBar().hide();
@@ -96,18 +102,6 @@ public class MainChatPage extends AppCompatActivity {
         btnNewChat = findViewById(R.id.btnNewChat);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
         myDB =new myDatabaseHelper(MainChatPage.this);
-
-
-//        // tiền sử lý màu chủ đề là light khi mới khởi động hệ thống
-        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
-        editor.apply();
-        //
-
 
         // tiền xử lý để hiện lịch sử chat hoặc empty chat
 
