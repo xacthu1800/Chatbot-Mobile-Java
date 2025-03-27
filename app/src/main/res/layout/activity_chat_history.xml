@@ -9,7 +9,7 @@
         android:id="@+id/chat_toolBar"
         android:name="com.example.chatbot_mobile_java.bin.fragments.chat_history_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

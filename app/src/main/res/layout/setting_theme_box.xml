@@ -12,7 +12,7 @@
         android:id="@+id/chat_toolBar"
         android:name="com.example.chatbot_mobile_java.bin.fragments.setting"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,24 +31,24 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
                 style="@style/API"
-                android:layout_width="400dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"></ImageView>
 
             <TextView
                 style="@style/API_TEXT"
-                android:layout_width="350dp"
+                android:layout_width="290dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center|left"
                 android:padding="6dp"
@@ -64,7 +64,7 @@
             <EditText
                 android:id="@+id/etApiKey"
                 style="@style/API_EDIT"
-                android:layout_width="310dp"
+                android:layout_width="280dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
@@ -80,9 +80,10 @@
                 style="@style/API_INPUT"
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:padding="40dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -96,6 +97,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
+
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,19 +105,19 @@
 
         <ImageView
             android:id="@+id/ivSystemIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="System Interface Icon"
             android:src="@drawable/ic_system" />
 
         <TextView
             android:id="@+id/tvSystemInterface"
-            android:layout_width="wrap_content"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:text="Giao diện hệ thống"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="32sp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -123,9 +125,9 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="220dp"
         android:elevation="4dp"
         android:orientation="horizontal"
         android:padding="4dp"
@@ -145,7 +147,7 @@
             android:paddingRight="8dp"
             android:textOff="Hệ thống"
             android:textOn="Hệ thống"
-            android:textSize="18sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <ToggleButton
@@ -155,12 +157,12 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:paddingLeft="16dp"
+            android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:textOff="Sáng"
             android:textOn="Sáng"
-            android:textSize="18sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <ToggleButton
@@ -175,7 +177,7 @@
             android:paddingRight="8dp"
             android:textOff="Tối"
             android:textOn="Tối"
-            android:textSize="18sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
 
