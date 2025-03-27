@@ -78,8 +78,19 @@ public class MainChatPage extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         // tiền sử lý màu chủ đề là light khi mới khởi động hệ thống
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
+        boolean isFirstRun = sharedPreferences.getBoolean("is_first_run", true);
+        if (isFirstRun) {
+            Log.d("ifFirstRun", "true");
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("is_first_run", false);
+            editor.apply();
+        } else {
+            Log.d("ifFirstRun", "false");
+            int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+            AppCompatDelegate.setDefaultNightMode(currentThemeMode);
+        }
         //
 
         super.onCreate(savedInstanceState);
