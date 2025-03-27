@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,6 +45,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainChatPage extends AppCompatActivity {
@@ -140,6 +143,28 @@ public class MainChatPage extends AppCompatActivity {
         // kết thúc khai báo giá trị các View
 
         // thiết lập chức năng các nút
+
+        etMessageInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().trim().isEmpty()) {
+                    Enter.setEnabled(false); // Disable button nếu rỗng
+                } else {
+                    Enter.setEnabled(true); // Enable button nếu có nội dung
+                }
+            }
+        });
+
         btnOptions.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -169,7 +194,13 @@ public class MainChatPage extends AppCompatActivity {
        });
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { sendMessage();}
+            public void onClick(View view) {
+               if(btnChooseModel.getText().toString().toUpperCase().equals("MÔ HÌNH")){
+                   Toast.makeText(MainChatPage.this, "Bạn chưa chọn mô hình", Toast.LENGTH_SHORT).show();
+                   return;
+               }
+                sendMessage();
+            }
         });
         btnNewChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,17 +287,6 @@ public class MainChatPage extends AppCompatActivity {
 
         String clientInput = etMessageInput.getText().toString();
         String modelApi = clientMessage.get_Type();
-
-        if (clientInput.isEmpty() && modelApi.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập nội dung và chọn mô hình", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (clientInput.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập nội dung", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (modelApi.isEmpty()) {
-            Toast.makeText(this, "Vui lòng chọn mô hình", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         addMessage(new chatMessage(clientInput, true));
         if(firstChat){
