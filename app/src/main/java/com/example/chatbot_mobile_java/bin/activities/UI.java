@@ -41,31 +41,19 @@ public class UI extends AppCompatActivity {
         btnLight = findViewById(R.id.btn_light);
         btn_System = findViewById(R.id.btn_system);
 
-//        sharedPreferences = peekAvailableContext().getSharedPreferences("MODE", Context.MODE_PRIVATE);
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        nightMODE = sharedPreferences.getBoolean("night", false);
-
-        // Use a single SharedPreferences for theme mode
-        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-
-        // Track theme mode with an enum or integer for more precise tracking
-        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
-
-        // Set initial theme based on saved preference
-        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
+//        int currentThemeMode = sharedPreferences.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+//        AppCompatDelegate.setDefaultNightMode(currentThemeMode);
 
         btnDark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Night mode", Toast.LENGTH_SHORT).show();
-
-                // Always set to night mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-                // Save the current mode
-                editor = sharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_YES);
                 editor.apply();
+                recreate();
             }
         });
 
@@ -73,14 +61,11 @@ public class UI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Light mode", Toast.LENGTH_SHORT).show();
-
-                // Always set to light mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-                // Save the current mode
-                editor = sharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
                 editor.apply();
+                recreate();
             }
         });
 
@@ -88,14 +73,11 @@ public class UI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "System theme", Toast.LENGTH_SHORT).show();
-
-                // Set to follow system mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-
-                // Save the current mode
-                editor = sharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("theme_mode", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                 editor.apply();
+                recreate();
             }
         });
         btnSubmitApiKey.setOnClickListener(new View.OnClickListener() {
