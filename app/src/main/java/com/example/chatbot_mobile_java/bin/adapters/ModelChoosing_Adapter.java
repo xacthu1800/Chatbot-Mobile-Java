@@ -44,6 +44,8 @@ public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Ad
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.tv_apiName.setText(apiList.get(position).getName());
         holder.tv_apiDescription.setText(apiList.get(position).getDescription());
+        String imageUrl = apiList.get(position).getImageURL();
+        Log.d("GlideDebug", "Image URL: " + imageUrl);
         Glide.with(this.context).load(apiList.get(position).getImageURL()).into(holder.iv_apiPic);
 
         holder.itemView.setOnClickListener(v -> {

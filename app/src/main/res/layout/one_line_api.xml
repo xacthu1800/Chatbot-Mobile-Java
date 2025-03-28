@@ -12,6 +12,8 @@
     android:padding="10dp">
 
     <ImageView
+        android:background="@drawable/circle"
+        android:scaleType="centerCrop"
         style="@style/ICON"
         android:id="@+id/iv_apiPicture"
         android:layout_width="50dp"
