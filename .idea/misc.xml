@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.134" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ai_icon.xml" value="0.1415" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background.xml" value="0.143" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/api_background_black.xml" value="0.143" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/close.xml" value="0.1455" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/close_black.xml" value="0.1455" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_baseline_select_all_24.xml" value="0.1415" />
+        <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_launcher_background.xml" value="0.134" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_system.xml" value="0.1215" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/ic_system_black.xml" value="0.1215" />
         <entry key="..\:/Users/ADMIN/Desktop/Chatbot-Mobile-Java/app/src/main/res/drawable/icon_model.xml" value="0.1415" />

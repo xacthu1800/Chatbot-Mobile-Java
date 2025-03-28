@@ -27,17 +27,12 @@
 
     <style name="RESPONSE">
         <item name="android:textColor">#000</item>
-        <item name="background">@drawable/app_chat_message</item>
+        <item name="android:background">@drawable/app_chat_message</item>
     </style>
 
     <style name="CHAT">
         <item name="android:textColor">#000</item>
-        <item name="background">@drawable/client_chat_message</item>
-        <item name="android:fontFamily">@font/baloo2</item>
-<!--        <item name="layout_constraintBottom_toBottomOf">parent</item>-->
-<!--        <item name="layout_constraintEnd_toEndOf">parent</item>-->
-<!--        <item name="layout_constraintTop_toTopOf">parent</item>-->
-<!--        <item name="layout_constraintVertical_bias">0.499</item>-->
+        <item name="android:background">@drawable/client_chat_message</item>
     </style>
 
     <style name="TEXT">
