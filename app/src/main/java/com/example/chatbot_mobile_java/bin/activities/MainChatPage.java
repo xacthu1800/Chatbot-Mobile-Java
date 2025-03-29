@@ -204,6 +204,11 @@ public class MainChatPage extends AppCompatActivity {
                    Toast.makeText(MainChatPage.this, "Bạn chưa chọn mô hình", Toast.LENGTH_SHORT).show();
                    return;
                }
+               if(etMessageInput.getText().toString().isEmpty()){
+                   Toast.makeText(MainChatPage.this, "Bạn chưa nhập nội dung", Toast.LENGTH_SHORT).show();
+                   return;
+               }
+
                 sendMessage();
             }
         });
