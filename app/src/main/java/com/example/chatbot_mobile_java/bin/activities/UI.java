@@ -94,6 +94,7 @@ public class UI extends AppCompatActivity {
                     imm.hideSoftInputFromWindow(etApiKey.getWindowToken(), 0);
                 }
                 etApiKey.clearFocus();
+                etApiKey.setText("");
             }
         });
 
