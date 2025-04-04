@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 import retrofit2.http.Body;
 
-public class ChatHistory extends AppCompatActivity  {
+public class ChatHistory extends AppCompatActivity {
     RecyclerView rvHistoryChat;
     RecyclerView.Adapter historyChatAdapter;
     private myDatabaseHelper myDB;
@@ -45,80 +45,67 @@ public class ChatHistory extends AppCompatActivity  {
         chatList.addItemToListChat(new history_chat("thái skibidi"));
         chatList.addItemToListChat(new history_chat("quân skibidi"));
         Log.d("listChat", chatList.getItematIndexInListChat(0).getChatText().toString());
-
         sqlListChat = new sql_list_chatMessage();
         sqlListChat = get_listChatMessage();
-
         list_conversationid = get_list_conversationId(sqlListChat);
         Log.d("list_conversationId", list_conversationid.toString());
-
         Map<Integer, sql_list_chatMessage> groupedMessages = groupMessagesByConversation(sqlListChat, list_conversationid);
-
-//        for (Map.Entry<Integer, sql_list_chatMessage> entry : groupedMessages.entrySet()) {
-//            Log.d("ketqua","Conversation ID: " + entry.getKey());
-//            for (sql_chatMessage msg : entry.getValue().getListMessage()) {
-//                Log.d("ketqua","  - " + msg.getContent());
-//            }
-//        }
 
         rvHistoryChat = findViewById(R.id.rvHistoryChat);
         rvHistoryChat.setLayoutManager(new LinearLayoutManager(this));
         historyChatAdapter = new history_chat_adapter(chatList, list_conversationid, groupedMessages);
         rvHistoryChat.setAdapter(historyChatAdapter);
-
-
     }
 
 
-    private sql_list_chatMessage get_listChatMessage (){
+    private sql_list_chatMessage get_listChatMessage() {
         sql_list_chatMessage sqlListChatMessage = new sql_list_chatMessage();
-        myDB =new myDatabaseHelper(ChatHistory.this);
+        myDB = new myDatabaseHelper(ChatHistory.this);
 
         Cursor cursor = myDB.readAllData();
-        if(cursor != null && cursor.moveToFirst()){
-            do{
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("_id"));
                 @SuppressLint("Range") int conversationId = cursor.getInt(cursor.getColumnIndex("conversation_id"));
                 @SuppressLint("Range") String content = cursor.getString(cursor.getColumnIndex("content"));
                 @SuppressLint("Range") boolean isClient = cursor.getInt(cursor.getColumnIndex("is_client")) == 1;
                 @SuppressLint("Range") int timestamp = cursor.getInt(cursor.getColumnIndex("timestamp"));
 
-                if (content!= null ){
-                    sqlListChatMessage.add(new sql_chatMessage(id,conversationId, content, isClient, timestamp));
+                if (content != null) {
+                    sqlListChatMessage.add(new sql_chatMessage(id, conversationId, content, isClient, timestamp));
                 }
 
-            } while(cursor.moveToNext());
+            } while (cursor.moveToNext());
             cursor.close();
         }
         return sqlListChatMessage;
     }
 
-    private List<Integer> get_list_conversationId(sql_list_chatMessage list){
+    private List<Integer> get_list_conversationId(sql_list_chatMessage list) {
         List<Integer> listConId = new ArrayList<>();
-        for(sql_chatMessage message : list.getList()){
-            if(!listConId.contains(message.getConversationId())){
+        for (sql_chatMessage message : list.getList()) {
+            if (!listConId.contains(message.getConversationId())) {
                 listConId.add(message.getConversationId());
             }
         }
         return listConId;
     }
 
-    private sql_list_chatMessage get_list_sorted_by_conversationId(sql_list_chatMessage list,int consId){
+    private sql_list_chatMessage get_list_sorted_by_conversationId(sql_list_chatMessage list, int consId) {
         sql_list_chatMessage sortedList = new sql_list_chatMessage();
 
-        for(sql_chatMessage message: list.getListMessage()){
-            if(message.getConversationId() == consId){
+        for (sql_chatMessage message : list.getListMessage()) {
+            if (message.getConversationId() == consId) {
                 sortedList.add(message);
             }
         }
-
         return sortedList;
     }
 
     private Map<Integer, sql_list_chatMessage> groupMessagesByConversation(
             sql_list_chatMessage list,
             List<Integer> conversationIds
-    ){
+    ) {
         Map<Integer, sql_list_chatMessage> result = new HashMap<>();
         for (Integer convId : conversationIds) {
             result.put(convId, new sql_list_chatMessage());
@@ -132,10 +119,4 @@ public class ChatHistory extends AppCompatActivity  {
         }
         return result;
     }
-
 }
-
-//    List<sql_chatMessage> conv1Messages = groupedMessages.get(1);
-//        for (sql_chatMessage msg : conv1Messages) {
-//        System.out.println(msg.getContent());
-//        }
