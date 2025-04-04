@@ -37,6 +37,7 @@ import com.example.chatbot_mobile_java.bin.data.clientMessage;
 import com.example.chatbot_mobile_java.bin.data.sql_chatMessage;
 import com.example.chatbot_mobile_java.bin.data.sql_list_chatMessage;
 import com.example.chatbot_mobile_java.bin.database.myDatabaseHelper;
+
 import android.content.SharedPreferences;
 import android.widget.ToggleButton;
 
@@ -49,7 +50,7 @@ import java.util.Locale;
 
 
 public class MainChatPage extends AppCompatActivity {
-    private LinearLayout layoutOptions, layoutExpandOption,layoutExpandedModel, chooseModel;
+    private LinearLayout layoutOptions, layoutExpandOption, layoutExpandedModel, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
 
     private Button btnChooseModel, btnOption, modeButton, btnNewChat;
@@ -75,7 +76,7 @@ public class MainChatPage extends AppCompatActivity {
     private int conversationId;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         // tiền sử lý màu chủ đề là light khi mới khởi động hệ thống
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         boolean isFirstRun = sharedPreferences.getBoolean("is_first_run", true);
@@ -112,12 +113,12 @@ public class MainChatPage extends AppCompatActivity {
         Enter = findViewById(R.id.Enter);
         btnNewChat = findViewById(R.id.btnNewChat);
         ConstraintLayout rootLayout = findViewById(R.id.chat_toolBar);
-        myDB =new myDatabaseHelper(MainChatPage.this);
+        myDB = new myDatabaseHelper(MainChatPage.this);
 
         // tiền xử lý để hiện lịch sử chat hoặc empty chat
 
         messages = new ArrayList<>();
-        if(firstChat){
+        if (firstChat) {
             List<sql_chatMessage> sqlListChatMessage = myDB.getChatsByConversationId(convIdFirstChat).getListMessage();
             messages = new ArrayList<>();
             for (sql_chatMessage sqlMsg : sqlListChatMessage) {
@@ -126,7 +127,7 @@ public class MainChatPage extends AppCompatActivity {
             }
             Log.d("firstChat", messages.toString());
         }
-        if(!firstChat && sql_list_chatMessage.getIntent_conversationId() != 0){
+        if (!firstChat && sql_list_chatMessage.getIntent_conversationId() != 0) {
             conversationId = sql_list_chatMessage.getIntent_conversationId();
             messages = new ArrayList<>();
             List<sql_chatMessage> sqlListChatMessage = sql_list_chatMessage.getIntent_listMessage();
@@ -171,11 +172,11 @@ public class MainChatPage extends AppCompatActivity {
         });
 
         btnOptions.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               toggleOptionsVisibility();
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                toggleOptionsVisibility();
+            }
+        });
         Micro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,20 +195,22 @@ public class MainChatPage extends AppCompatActivity {
         });
 
         btnChooseModel.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) { toggleModelsVisibility(); }
-       });
+            @Override
+            public void onClick(View view) {
+                toggleModelsVisibility();
+            }
+        });
         Enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(btnChooseModel.getText().toString().toUpperCase().equals("MÔ HÌNH")){
-                   Toast.makeText(MainChatPage.this, "Bạn chưa chọn mô hình", Toast.LENGTH_SHORT).show();
-                   return;
-               }
-               if(etMessageInput.getText().toString().isEmpty()){
-                   Toast.makeText(MainChatPage.this, "Bạn chưa nhập nội dung", Toast.LENGTH_SHORT).show();
-                   return;
-               }
+                if (btnChooseModel.getText().toString().toUpperCase().equals("MÔ HÌNH")) {
+                    Toast.makeText(MainChatPage.this, "Bạn chưa chọn mô hình", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (etMessageInput.getText().toString().isEmpty()) {
+                    Toast.makeText(MainChatPage.this, "Bạn chưa nhập nội dung", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 sendMessage();
             }
@@ -222,10 +225,10 @@ public class MainChatPage extends AppCompatActivity {
                 recreate();
             }
         });
-       // kết thục thiết lập chức năng các nút
+        // kết thục thiết lập chức năng các nút
 
 
-       // xử lý chat của recycle view
+        // xử lý chat của recycle view
         chatAdapter = new chat_adapter(this, messages);
         rvMessages = findViewById(R.id.rvMessages);
 
@@ -264,6 +267,7 @@ public class MainChatPage extends AppCompatActivity {
         }
         optionsVisible = !optionsVisible;
     }
+
     // toggle choose model
     private void toggleModelsVisibility() {
         if (optionsVisible_Model == false) {
@@ -273,7 +277,7 @@ public class MainChatPage extends AppCompatActivity {
             Micro.setVisibility(View.GONE);
             Enter.setVisibility(View.GONE);
         } else {
-           // chooseModel.setVisibility(View.GONE);
+            // chooseModel.setVisibility(View.GONE);
             layoutExpandedModel.setVisibility(View.GONE);
             etMessageInput.setVisibility(View.VISIBLE);
             btnOptions.setVisibility(View.VISIBLE);
@@ -282,24 +286,26 @@ public class MainChatPage extends AppCompatActivity {
         }
         optionsVisible_Model = !optionsVisible_Model;
     }
+
     // hàm đổ dữ liệu vào List-model
     private void fillApiList() {
-        Api a0 = new Api(0, "Gemini 2.0 Pro Experimental","Nổi bật với khả năng xử lý thông tin phức tạp, cửa sổ ngữ cảnh rộng, đặc biệt tối ưu cho lập trình và nghiên cứu.", "https://drive.google.com/uc?export=view&id=1YZhzJZtUSfp5DtJvbnAUXnrlB_ptNoT5", "2.0 Pro");
-        Api a1 = new Api(1, "Gemini 2.0 Flash Thinking Experimental","Tập trung vào tốc độ xử lý và khả năng suy luận nhanh, tối ưu hóa chi phí.", "https://drive.google.com/uc?export=view&id=1YZhzJZtUSfp5DtJvbnAUXnrlB_ptNoT5", "2.0 Flash");
+        Api a0 = new Api(0, "Gemini 2.0 Pro Experimental", "Nổi bật với khả năng xử lý thông tin phức tạp, cửa sổ ngữ cảnh rộng, đặc biệt tối ưu cho lập trình và nghiên cứu.", "https://drive.google.com/uc?export=view&id=1YZhzJZtUSfp5DtJvbnAUXnrlB_ptNoT5", "2.0 Pro");
+        Api a1 = new Api(1, "Gemini 2.0 Flash Thinking Experimental", "Tập trung vào tốc độ xử lý và khả năng suy luận nhanh, tối ưu hóa chi phí.", "https://drive.google.com/uc?export=view&id=1YZhzJZtUSfp5DtJvbnAUXnrlB_ptNoT5", "2.0 Flash");
         Api a2 = new Api(2, "OpenAI GPT-4o-mini", "Là một phiên bản nhẹ hơn của GPT-4o, có tốc độ nhanh, tối ưu hóa cho hiệu suất cao với tài nguyên thấp.", "https://drive.google.com/uc?export=view&id=1h1rTuksQ7qJq4Ov64p6MPoZVs7ju2ZTu", "4o-mini");
         Api a3 = new Api(3, "Claude 3.7", "Claude là AI chatbot của Anthropic, nổi bật với khả năng suy luận tốt, tạo nội dung sáng tạo và đảm bảo an toàn trong phản hồi.", "https://drive.google.com/uc?export=view&id=1qhCWhVz1EdajTxPV-cCQZFUN_-nEFDag", "Claude 3.7");
 
-        apiList.addAll(Arrays.asList(new Api[] {a0, a1, a2, a3}));
+        apiList.addAll(Arrays.asList(new Api[]{a0, a1, a2, a3}));
     }
+
     // hàm xử lý gửi tin nhắn
-    private void sendMessage(){
+    private void sendMessage() {
         clientMessage.initialize_Text(etMessageInput.getText().toString());
 
         String clientInput = etMessageInput.getText().toString();
         String modelApi = clientMessage.get_Type();
 
         addMessage(new chatMessage(clientInput, true));
-        if(firstChat){
+        if (firstChat) {
             convIdFirstChat = conversationId;
         }
         myDB.addChatMessage(conversationId, clientInput, true, get_timestamp());
@@ -307,7 +313,7 @@ public class MainChatPage extends AppCompatActivity {
         api_controller.resolveApiMessage(new clientMessage(), new ApiResponseCallback() {
             @Override
             public void onSuccess(String response) {
-                runOnUiThread(()->{
+                runOnUiThread(() -> {
                     addMessage(new chatMessage(response, false));
                     myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
                     db.addChatMessage(conversationId, response, false, get_timestamp());
@@ -317,7 +323,7 @@ public class MainChatPage extends AppCompatActivity {
 
             @Override
             public void onError(String error) {
-                runOnUiThread(()->{
+                runOnUiThread(() -> {
                     addMessage(new chatMessage("Error: " + error, false));
                     myDatabaseHelper db = new myDatabaseHelper(MainChatPage.this);
                     db.addChatMessage(conversationId, "Error: " + error, false, get_timestamp());
@@ -329,18 +335,19 @@ public class MainChatPage extends AppCompatActivity {
 //        Log.d("send message: ", clientMessage.get_Text());
         etMessageInput.setText("");
         clientMessage.initialize_Text("");
-        return ;
-    }
-    private void addMessage(chatMessage message){
-        chatAdapter.addMessage(message);
-        rvMessages.scrollToPosition(chatAdapter.getItemCount()-1);
+        return;
     }
 
-    private int get_timestamp(){
+    private void addMessage(chatMessage message) {
+        chatAdapter.addMessage(message);
+        rvMessages.scrollToPosition(chatAdapter.getItemCount() - 1);
+    }
+
+    private int get_timestamp() {
         return (int) (System.currentTimeMillis() / 1000);
     }
 
-    public static void setModelToggleState(){
+    public static void setModelToggleState() {
         optionsVisible_Model = !optionsVisible_Model;
     }
 
@@ -351,8 +358,6 @@ public class MainChatPage extends AppCompatActivity {
     public static void setFirstChat(boolean firstChat) {
         MainChatPage.firstChat = firstChat;
     }
-
-
 }
 
 
