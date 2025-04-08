@@ -57,7 +57,7 @@ public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Ad
             EditText etMessageInput = ((Activity) context).findViewById(R.id.etMessageInput);
             Button btnModel = ((Activity) context).findViewById(R.id.btnChooseModel);
             ImageView ivModelImg = ((Activity) context).findViewById(R.id.ivModelImg);
-            if(linearLayoutContainer.getVisibility() == View.VISIBLE){
+            if (linearLayoutContainer.getVisibility() == View.VISIBLE) {
                 linearLayoutContainer.setVisibility(View.GONE);
                 btnOptions.setVisibility(View.VISIBLE);
                 Micro.setVisibility(View.VISIBLE);
@@ -66,11 +66,10 @@ public class ModelChoosing_Adapter extends RecyclerView.Adapter<ModelChoosing_Ad
                 btnModel.setText(apiList.get(position).getShortName());
                 Glide.with((Activity) context).load(apiList.get(position).getImageURL()).into(ivModelImg);
                 MainChatPage.setModelToggleState();
-            }else
-            {
+            } else {
                 Log.d("LinearLayout_container", "not visible");
             }
-           Log.d("bin", "user model AI type: " + clientMessage.get_Type());
+            Log.d("bin", "user model AI type: " + clientMessage.get_Type());
         });
 
     }

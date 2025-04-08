@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.content.Intent;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -32,7 +33,6 @@ public class toolbar extends Fragment {
         //return inflater.inflate(R.layout.fragment_toolbar, container, false);
         View view = inflater.inflate(R.layout.fragment_toolbar, container, false);
 
-
         ImageButton btnOpenChatHistory = view.findViewById(R.id.imgBtnToolbar);
 
         btnOpenChatHistory.setOnClickListener(v -> {
@@ -43,9 +43,6 @@ public class toolbar extends Fragment {
             }
         });
 
-
-
         return view;
-
     }
 }

@@ -52,7 +52,6 @@ import java.util.Locale;
 public class MainChatPage extends AppCompatActivity {
     private LinearLayout layoutOptions, layoutExpandOption, layoutExpandedModel, chooseModel;
     private ImageButton btnOptions, Micro, Enter;
-
     private Button btnChooseModel, btnOption, modeButton, btnNewChat;
     private ToggleButton btnDark, btnLight;
     private EditText etMessageInput;
@@ -65,7 +64,6 @@ public class MainChatPage extends AppCompatActivity {
     private myDatabaseHelper myDB;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
 
     static boolean firstChat = true;
     static int convIdFirstChat;

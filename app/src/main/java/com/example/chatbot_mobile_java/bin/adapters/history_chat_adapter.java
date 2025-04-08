@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -30,14 +31,14 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
             history_listChat history_listChat,
             List<Integer> conversationIdList,
             Map<Integer, sql_list_chatMessage> groupedMessageList
-            ) {
+    ) {
         this.chatList = history_listChat;
         this.conversationIdList = conversationIdList;
         this.groupedMessageList = groupedMessageList;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_history, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
@@ -47,14 +48,14 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
     public void onBindViewHolder(history_chat_adapter.MyViewHolder holder, int position) {
         sql_list_chatMessage list;
         list = this.groupedMessageList.get(this.conversationIdList.get(position));
-        if(list == null){
+        if (list == null) {
             holder.ItemChatHistory.setText("No message");
             Log.d("errrr", "null");
-        }else  {
+        } else {
             Log.d("errrr", "not null");
         }
 
-        holder.ItemChatHistory.setText(list.get_last_textMessage()) ;
+        holder.ItemChatHistory.setText(list.get_last_textMessage());
         holder.itemView.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, MainChatPage.class);
@@ -66,7 +67,6 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
 
             context.startActivity(intent);
         });
-
     }
 
     @Override
@@ -74,10 +74,10 @@ public class history_chat_adapter extends RecyclerView.Adapter<history_chat_adap
         return this.conversationIdList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView ItemChatHistory;
 
-        public MyViewHolder(View itemView){
+        public MyViewHolder(View itemView) {
             super(itemView);
             ItemChatHistory = itemView.findViewById(R.id.tvItemChatHistory);
         }
